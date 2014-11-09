@@ -8,7 +8,7 @@
       {{/if}}
     </td>
     <td>
-      <span class="label label-default">{{gamertag}}</span>
+      <a href="{{profileUrl}}" target="_blank" class="label label-default">{{gamertag}}</a>
       {{#if has_mic}}
         <i class="fa fa-microphone" data-toggle="tooltip" data-placement="bottom" title="Has Microphone"></i>
       {{else}}
@@ -17,7 +17,6 @@
       {{#if has_exp}}
         <i class="fa fa-certificate" data-toggle="tooltip" data-placement="bottom" title="Has Activity Expierence"></i>
       {{/if}}
-      <a href="{{profileUrl}}" target="_blank"><i class="fa fa-tag" data-toggle="tooltip" data-placement="bottom" title="View Profile"></i></a>
       <br />
       {{#if isFireteamListing}}
         <span class="label label-default">{{required_fireteam_members}} More Guardian{{#if requiresMoreThanOneMember}}s{{/if}} Required</span>
