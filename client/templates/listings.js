@@ -9,9 +9,17 @@ Template.listings.helpers({
       }
     });
 
-    // format fireteam size as an interger
+    // parse params that should be integers
     if (filterParams['fireteam_size']) {
       filterParams['fireteam_size'] = parseInt(filterParams['fireteam_size']);
+    }
+
+    if (filterParams['has_mic']) {
+      filterParams['has_mic'] = parseInt(filterParams['has_mic']);
+    }
+
+    if (filterParams['has_exp']) {
+      filterParams['has_exp'] = parseInt(filterParams['has_exp']);
     }
 
     // when filtering by level make sure we query all possible level values
