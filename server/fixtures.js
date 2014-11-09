@@ -21,7 +21,7 @@ if (Listings.find().count() === 0) {
       listing['level'] = _.random(1, CoreData.maxProgressionLevel);
     } else {
       // fireteam can also have 'any' region
-      var regions = CoreData.regions;
+      var regions = _.clone(CoreData.regions);
       regions.push({ key: 'any', label: 'any' });
       listing['region'] = _.sample(regions).key;
 
