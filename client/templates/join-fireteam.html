@@ -1,0 +1,48 @@
+<template name="joinFireteam">
+  <div id="join-fireteam" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span>×</span>
+          </button>
+          <h4 class="modal-title">Join A Fireteam</h4>
+        </div>
+        <div class="modal-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta dolorum eum nihil aliquam, quidem, eius amet, at cupiditate saepe voluptates voluptate quae non ex! Distinctio cupiditate vitae id quis laborum.</p>
+          <form role="form" data-formstate-id="join-fireteam">
+            <div class="form-group">
+              <label>Gamertag</label>
+              <input type="text" class="form-control" name="gamertag" required>
+            </div>
+            {{> commonFormSelect options=getCoreData.platforms name="platform" label="Platform"}}
+            {{> commonFormSelect options=getCoreData.classes name="class" label="Class"}}
+            {{> commonFormSelect options=getProgressionLevelOptions name="level" label="Level"}}
+            {{> commonFormSelect options=getCoreData.regions name="region" label="Region"}}
+            {{> commonFormSelect options=getCoreData.activities name="activity" label="Activity" suboptions="subActivities"}}
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="1" name="has_exp">
+                  I have activity experience
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="1" name="has_mic">
+                  I have a microphone
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Comment</label>
+              <textarea name="comment" class="form-control" maxlength="256"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default">Add Listing</button>
+            <button type="submit" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

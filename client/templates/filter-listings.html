@@ -1,0 +1,102 @@
+<template name="filterListings">
+  <div id="filter-listings">
+    <h3 class="page-header"><i class="fa fa-filter"></i> Filter Listings</h3>
+    <form role="form" id="filter-listings-form">
+      {{#if filterCriteriaModified}}
+      <div class="alert alert-warning" role="alert">
+        You have changed the search criteria! Make sure you press "Find Me A Fireteam!" to refresh the results!
+      </div>
+      {{/if}}
+      <div class="row">
+        <div class="col-md-3">
+          {{> commonFormSelect options=getCoreData.platforms name="platform" label="Platform" anyOption=true}}
+        </div>
+        <div class="col-md-3">
+          {{> commonFormSelect options=getCoreData.regions name="region" label="Region" anyOption=true}}
+        </div>
+        <div class="col-md-3">
+          {{> commonFormSelect options=getCoreData.activities name="activity" label="Activity" suboptions="subActivities" anyOption=true}}
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Listing Type</label>
+            <select name="type" class="form-control">
+              <option value="any">Any</option>
+              <option value="gaurdian">Guardians looking for a fireteam</option>
+              <option value="fireteam">Fireteam looking for guardians</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div id="advanced-options">
+        {{#if displayJoinfireteamAdvancedOptions}}
+        <div id="advanced-options-join-fireteam" class="advanced-suboptions row">
+          <div class="col-md-3">
+            {{> commonFormSelect options=getCoreData.classes name="class" label="Class" anyOption=true}}
+          </div>
+          <div class="col-md-3">
+            {{> commonFormSelect options=getProgressionLevelOptions name="level" label="Level" anyOption=true}}
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="1" name="has_mic">
+                  Gaurdian Has Microphone
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="1" name="has_exp">
+                  Guardian Has Activity Experience
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/if}}
+        {{#if displayFormfireteamAdvancedOptions}}
+        <div id="advanced-options-form-fireteam" class="advanced-suboptions row">
+          <div class="col-md-4">
+            {{#with formId="filter-listings-form" optionLabelFilter=getFireteamSizeOptionLabelFilter}}
+              {{> commonFormSelect options=getFireteamSizeOptions name="fireteam_size" label="Fireteam Size" anyOption=true}}
+            {{/with}}
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="1" name="has_mic">
+                  A Guardian In The Fireteam Has Microphone
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="1" name="has_exp">
+                  A Guardian In The Fireteam Has Activity Experience
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/if}}
+      </div>
+      <div class="row form-actions">
+        <div class="col-md-12">
+          <div class="form-group">
+            <button type="reset" class="btn btn-default">Reset</button>
+            <button type="submit" class="btn btn-default">Find Me A Fireteam!</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</template>

@@ -1,0 +1,23 @@
+<template name="commonFormSelect">
+  <div class="form-group">
+    <label>{{label}}</label>
+    <select class="form-control" name="{{name}}">
+      {{#if hasAnyOption}}
+      <option value="any">Any</option>
+      {{/if}}
+      {{#if hasSuboptions}}
+        {{#each options}}
+        <optgroup label="{{label}}">
+          {{#each getSuboptions ../suboptions}}
+            <option value="{{key}}">{{label}}</option>
+          {{/each}}
+        </optgroup>
+        {{/each}}
+      {{else}}
+        {{#each options}}
+        <option value="{{key}}">{{label}}</option>
+        {{/each}}
+      {{/if}}
+    </select>
+  </div>
+</template>

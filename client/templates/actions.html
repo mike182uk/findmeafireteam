@@ -1,0 +1,10 @@
+<template name="actions">
+  <div id="actions">
+    {{#if canCreateNewListing}}
+    <button class="btn btn-default" data-toggle="modal" data-target="#join-fireteam">Join A Fireteam</button>
+    <button class="btn btn-default" data-toggle="modal" data-target="#form-fireteam">Form A Fireteam</button>
+    {{else}}
+    <button class="btn btn-danger" data-action="remove-listing">Remove My Listing</button>
+    {{/if}}
+  </div>
+</template>
