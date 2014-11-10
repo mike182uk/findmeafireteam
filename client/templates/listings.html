@@ -7,6 +7,11 @@
       You are currently filtering the lisitings that are being displayed. Press the "Reset" button above to remove all filters.
     </div>
     {{/if}}
+    {{#if newListingsAvailable}}
+      <div class="alert alert-info" role="alert">
+      There has been <strong>{{newListingsAvailable}}</strong> new {{newListingsKeyword newListingsAvailable}} posted since your last reload. <button id="show-new-listings" class="btn btn-primary btn-xs">Show new {{newListingsKeyword newListingsAvailable}}</button>
+      </div>
+    {{/if}}
     {{#if listings.count}}
     <table class="table">
       <thead>

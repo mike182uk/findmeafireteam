@@ -1,3 +1,7 @@
 .form-actions {
   text-align: right;
 }
+
+#show-new-listings {
+  text-transform: capitalize;
+}

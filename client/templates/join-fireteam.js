@@ -17,9 +17,14 @@ Template.joinFireteam.events({
     try {
       var listingId = Listings.insert(listingData);
 
+      // save listing id to the session
       Session.setPersistent('active_listing_id', listingId);
 
+      // hide modal
       $modal.modal('hide');
+
+      // load in any new data
+      Helpers.touchDataLastRetrieved();
     } catch (e) {
 
     }

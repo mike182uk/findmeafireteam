@@ -1,5 +1,7 @@
 Meteor.startup(function () {
-  Meteor.subscribe('listings');
+  Meteor.subscribe('listings', function () {
+    Helpers.touchDataLastRetrieved();
+  });
 });
 
 Session.setDefaultPersistent('active_listing_id', null);
