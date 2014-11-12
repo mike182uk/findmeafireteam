@@ -10,12 +10,20 @@ Template.formFireteam.events({
       listingData[formField.name] = formField.value;
     });
 
+    if (listingData['has_mic']) {
+      listingData['has_mic'] = parseInt(listingData['has_mic']);
+    }
+
+    if (listingData['has_exp']) {
+      listingData['has_exp'] = parseInt(listingData['has_exp']);
+    }
+
     listingData['type'] = 'fireteam';
     listingData['created_at'] = (new Date).getTime();
-    listingData['required_fireteam_members'] = parseInt(listingData.required_fireteam_members);
+    listingData['required_fireteam_members'] = parseInt(listingData['required_fireteam_members']);
 
-    var maxFireteamSize = Helpers.getMaxFireteamSizeForActivity(listingData.activity);
-    listingData['fireteam_size'] = maxFireteamSize - listingData.required_fireteam_members;
+    var maxFireteamSize = Helpers.getMaxFireteamSizeForActivity(listingData['activity']);
+    listingData['fireteam_size'] = maxFireteamSize - listingData['required_fireteam_members'];
 
     try {
       var listingId = Listings.insert(listingData);

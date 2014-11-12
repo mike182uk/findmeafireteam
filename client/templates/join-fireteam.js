@@ -11,6 +11,15 @@ Template.joinFireteam.events({
     });
 
     listingData['level'] = parseInt(listingData['level']);
+
+    if (listingData['has_mic']) {
+      listingData['has_mic'] = parseInt(listingData['has_mic']);
+    }
+
+    if (listingData['has_exp']) {
+      listingData['has_exp'] = parseInt(listingData['has_exp']);
+    }
+
     listingData['type'] = 'gaurdian';
     listingData['created_at'] = (new Date).getTime();
 
