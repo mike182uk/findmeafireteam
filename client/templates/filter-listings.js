@@ -26,6 +26,9 @@ Template.filterListings.events({
 
       // reset criteria notification on listings form
       Session.setTemp('filter_criteria_modified', false);
+
+      // load in any new data
+      Helpers.touchDataLastRetrieved();
     }, 100);
 
     // remove any stored filter params from the session
@@ -45,6 +48,9 @@ Template.filterListings.events({
 
     // reset criteria notification on listings form
     Session.setTemp('filter_criteria_modified', false);
+
+    // load in any new data
+    Helpers.touchDataLastRetrieved();
   },
   'change :input': function () {
     Session.setTemp('filter_criteria_modified', true);
