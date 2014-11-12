@@ -25,6 +25,9 @@ Template.listings.helpers({
   },
   newListingsKeyword: function (listingsCount) {
     return listingsCount > 1 ? 'listings' : 'listing';
+  },
+  listingsLoaded: function () {
+    return Session.get('data_last_retrieved_timestamp');
   }
 });
 

@@ -19,7 +19,6 @@ Template.formFireteam.events({
 
     try {
       var listingId = Listings.insert(listingData);
-      console.log(listingData);
 
       // save listing id to the session
       Session.setPersistent('active_listing_id', listingId);

@@ -74,6 +74,9 @@ Template.filterListings.helpers({
   },
   filterCriteriaModified: function () {
     return Session.get('filter_criteria_modified');
+  },
+  filteringDisabled: function () {
+    return ! Session.get('data_last_retrieved_timestamp') ? 'disabled' : '';
   }
 });
 
