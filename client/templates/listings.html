@@ -3,21 +3,20 @@
     <h3 class="page-header"><i class="fa fa-list"></i> Listings</h3>
     {{#if listingsAreFiltered}}
       <div class="alert alert-info" role="alert">
-        <i class="fa fa-filter"></i>
-        You are currently filtering the lisitings that are being displayed. Press the "Reset" button above to remove all filters.
+        <p>You are currently filtering the lisitings that are being displayed. Press the <strong>Reset</strong> button above to remove all filters.</p>
       </div>
     {{/if}}
     {{#if newListingsAvailable}}
       <div class="alert alert-info" role="alert">
-      There has been <strong>{{newListingsAvailable}}</strong> new {{newListingsKeyword newListingsAvailable}} posted since your last reload. <button id="show-new-listings" class="btn btn-primary btn-xs">Show new {{newListingsKeyword newListingsAvailable}}</button>
+        <p>There has been <strong>{{newListingsAvailable}}</strong> new {{newListingsKeyword newListingsAvailable}} posted since your last reload. <button id="show-new-listings" class="btn btn-primary btn-xs text-capitalize">Show new {{newListingsKeyword newListingsAvailable}}</button></p>
       </div>
     {{/if}}
     {{#if listingsLoaded}}
       {{#if listings.count}}
-        <table class="table">
+        <table class="table table-hover">
           <thead>
-            <tr>
-              <th>Listing Type</th>
+            <tr class="hidden-xs">
+              <th></th>
               <th>Guardian</th>
               <th>Activity</th>
               <th>Posted</th>

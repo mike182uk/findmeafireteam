@@ -6,11 +6,10 @@
 meteor-platform
 autopublish
 insecure
-mizzao:bootstrap-3
 underscore
 chrismbeckett:fontawesome4
 mrt:moment
 u2622:persistent-session
 mrt:chance
 less
-
+nemo64:bootstrap

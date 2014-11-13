@@ -1,7 +1,21 @@
+@import "../lib/custom.bootstrap.import.less";
+
+#actions {
+  text-align: center;
+}
+
 .form-actions {
   text-align: right;
 }
 
-#show-new-listings {
-  text-transform: capitalize;
+.footer {
+  padding-top: 20px;
+  color: @gray-light;
+  border-top: 1px solid @gray-lighter;
+}
+
+@media (max-width: @screen-sm-min) {
+  .form-actions {
+    text-align: center;
+  }
 }

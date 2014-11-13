@@ -1,5 +1,5 @@
 <template name="listing">
-  <tr>
+  <tr class="listing-row visible-sm visible-md visible-lg hidden-xs">
     <td>
       {{#if isFireteamListing}}
         <i class="fa fa-users" data-toggle="tooltip" data-placement="right" title="Fireteam looking for gaurdians"></i>
@@ -24,7 +24,7 @@
         <span>Level {{level}} {{class}}</span>
       {{/if}}
       <br />
-      <span>{{platform}} - {{region}}</span>
+      <em class="small">{{platform}} - {{region}}</em>
     </td>
     <td>
       <p><strong>{{activity}}</strong></p>
@@ -35,6 +35,44 @@
       {{#if isMyListing}}
         <button class="btn btn-danger btn-xs" data-action="remove-listing">Remove My Listing</button>
       {{/if}}
+    </td>
+  </tr>
+  <tr class="listing-row hidden-sm hidden-md hidden-lg visible-xs-*">
+    <td colspan="5">
+      <p>
+        {{#if isFireteamListing}}
+          <i class="fa fa-users" data-toggle="tooltip" data-placement="right" title="Fireteam looking for gaurdians"></i>
+        {{else}}
+          <i class="fa fa-user" data-toggle="tooltip" data-placement="right" title="Guardian looking for fireteam"></i>
+        {{/if}}
+        <a href="{{profileUrl}}" target="_blank" class="label label-default">{{gamertag}}</a>
+        {{#if has_mic}}
+          <i class="fa fa-microphone" data-toggle="tooltip" data-placement="bottom" title="Has Microphone"></i>
+        {{else}}
+          <i class="fa fa-microphone-slash" data-toggle="tooltip" data-placement="bottom" title="Does Not Have Microphone"></i>
+        {{/if}}
+        {{#if has_exp}}
+          <i class="fa fa-certificate" data-toggle="tooltip" data-placement="bottom" title="Has Activity Expierence"></i>
+        {{/if}}
+        <div class="pull-right">
+          {{#if isFireteamListing}}
+            <span class="label label-default">{{required_fireteam_members}} More Guardian{{#if requiresMoreThanOneMember}}s{{/if}} Required</span>
+          {{else}}
+            <span class="label label-default">Level {{level}} {{class}}</span>
+          {{/if}}
+        </div>
+      </p>
+      <p><strong>{{activity}}</strong></p>
+      <p><em class="small">{{platform}} - {{region}}</em></p>
+      <p>{{comment}}</p>
+      <p class="pull-left">
+        {{#if isMyListing}}
+          <button class="btn btn-danger btn-xs" data-action="remove-listing">Remove My Listing</button>
+        {{/if}}
+      </p>
+      <p class="pull-right">
+        <em>Posted {{createdAt}}</em>
+      </p>
     </td>
   </tr>
 </template>
