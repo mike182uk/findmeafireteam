@@ -88,6 +88,6 @@ Template.filterListings.rendered = function () {
   // trigger a change on the listing type select so that the listing type
   // is saved to the session
   this.$('form').find('select[name=type]').trigger('change');
-
+  // reset criteria notification on listings form
   Session.setTemp('filter_criteria_modified', false);
 };

@@ -2,10 +2,10 @@
   <div id="listings">
     <h3 class="page-header"><i class="fa fa-list"></i> Listings</h3>
     {{#if listingsAreFiltered}}
-    <div class="alert alert-info" role="alert">
-      <i class="fa fa-filter"></i>
-      You are currently filtering the lisitings that are being displayed. Press the "Reset" button above to remove all filters.
-    </div>
+      <div class="alert alert-info" role="alert">
+        <i class="fa fa-filter"></i>
+        You are currently filtering the lisitings that are being displayed. Press the "Reset" button above to remove all filters.
+      </div>
     {{/if}}
     {{#if newListingsAvailable}}
       <div class="alert alert-info" role="alert">
@@ -14,26 +14,26 @@
     {{/if}}
     {{#if listingsLoaded}}
       {{#if listings.count}}
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Listing Type</th>
-            <th>Guardian</th>
-            <th>Activity</th>
-            <th>Posted</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each listings}}
-            {{> listing}}
-          {{/each}}
-        </tbody>
-      </table>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Listing Type</th>
+              <th>Guardian</th>
+              <th>Activity</th>
+              <th>Posted</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each listings}}
+              {{> listing}}
+            {{/each}}
+          </tbody>
+        </table>
       {{else}}
         {{#if listingsAreFiltered}}
-        <p class="lead">There are no listings that match your criteria.</p>
+          <p class="lead">There are no listings that match your criteria.</p>
         {{else}}
-        <p class="lead">There are no listings at the moment. Why not be the first to add one?</p>
+          <p class="lead">There are no listings at the moment. Why not be the first to add one?</p>
         {{/if}}
       {{/if}}
     {{else}}
