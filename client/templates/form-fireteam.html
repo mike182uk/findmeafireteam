@@ -17,22 +17,22 @@
             </div>
             {{> commonFormSelect options=getCoreData.activities name="activity" label="Activity" suboptions="subActivities"}}
             {{> commonFormSelect options=getCoreData.platforms name="platform" label="Platform"}}
-            {{> commonFormSelect options=getCoreData.regions name="region" label="Prefered Region For Gaurdians" anyOption=true}}
+            {{> commonFormSelect options=getCoreData.regions name="region" label="Prefered Region For Guardians" anyOption=true}}
 
             {{#with formId="form-fireteam-form" optionLabelFilter=getRequiredFireteamMembersOptionLabelFilter}}
-              {{> commonFormSelect options=getFireteamSizeOptions name="required_fireteam_members" label="Required Number Of Gaurdians"}}
+              {{> commonFormSelect options=getFireteamSizeOptions name="required_fireteam_members" label="Required Number Of Guardians"}}
             {{/with}}
             <div class="form-group">
               <div class="checkbox">
                 <label>
                   <input type="checkbox" value="1" name="has_exp">
-                  A gaurdian in the fireteam has activity experience
+                  A guardian in the fireteam has activity experience
                 </label>
               </div>
               <div class="checkbox">
                 <label>
                   <input type="checkbox" value="1" name="has_mic">
-                  A gaurdian in the fireteam has a microphone
+                  A guardian in the fireteam has a microphone
                 </label>
               </div>
             </div>

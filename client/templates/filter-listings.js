@@ -67,7 +67,7 @@ Template.filterListings.helpers({
     }
   },
   displayJoinfireteamAdvancedOptions: function () {
-    return Session.get('selected_listing_type') == 'gaurdian';
+    return Session.get('selected_listing_type') == 'guardian';
   },
   displayFormfireteamAdvancedOptions: function () {
     return Session.get('selected_listing_type') == 'fireteam';

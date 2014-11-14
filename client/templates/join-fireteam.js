@@ -20,7 +20,7 @@ Template.joinFireteam.events({
       listingData['has_exp'] = parseInt(listingData['has_exp']);
     }
 
-    listingData['type'] = 'gaurdian';
+    listingData['type'] = 'guardian';
     listingData['created_at'] = (new Date).getTime();
 
     try {

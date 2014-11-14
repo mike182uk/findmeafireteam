@@ -13,10 +13,10 @@ if (Listings.find().count() === 0) {
     listing['has_exp'] = _.random(1);
     listing['created_at'] = new Date((new Date).getTime() - _.random(1, 60) * 60000).getTime();
 
-    var types = ['gaurdian', 'fireteam'];
+    var types = ['guardian', 'fireteam'];
     listing['type'] = _.sample(types);
 
-    if (listing['type'] == 'gaurdian') {
+    if (listing['type'] == 'guardian') {
       listing['class'] = _.sample(CoreData.classes).key;
       listing['level'] = _.random(1, CoreData.maxProgressionLevel);
     } else {
