@@ -9,7 +9,7 @@
     </td>
     <td>
       <div class="gamertag-badges">
-        <a href="{{profileUrl}}" target="_blank" class="label label-default gamertag">{{gamertag}}</a>
+        <a class="label label-default gamertag" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">{{gamertag}}</a>
         {{#if has_mic}}
           <i class="fa fa-microphone" data-toggle="tooltip" data-placement="bottom" title="Has Microphone"></i>
         {{else}}
@@ -45,4 +45,9 @@
       </p>
     </td>
   </tr>
+  <script>
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+  });
+  </script>
 </template>
