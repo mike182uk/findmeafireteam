@@ -1,6 +1,6 @@
 <template name="listing">
-  <tr class="listing-row visible-sm visible-md visible-lg hidden-xs">
-    <td>
+  <tr class="listing">
+    <td class="listing-type">
       {{#if isFireteamListing}}
         <i class="fa fa-users" data-toggle="tooltip" data-placement="right" title="Fireteam looking for gaurdians"></i>
       {{else}}
@@ -8,44 +8,8 @@
       {{/if}}
     </td>
     <td>
-      <a href="{{profileUrl}}" target="_blank" class="label label-default">{{gamertag}}</a>
-      {{#if has_mic}}
-        <i class="fa fa-microphone" data-toggle="tooltip" data-placement="bottom" title="Has Microphone"></i>
-      {{else}}
-        <i class="fa fa-microphone-slash" data-toggle="tooltip" data-placement="bottom" title="Does Not Have Microphone"></i>
-      {{/if}}
-      {{#if has_exp}}
-        <i class="fa fa-certificate" data-toggle="tooltip" data-placement="bottom" title="Has Activity Expierence"></i>
-      {{/if}}
-      <br />
-      {{#if isFireteamListing}}
-        <span class="label label-default">{{required_fireteam_members}} More Guardian{{#if requiresMoreThanOneMember}}s{{/if}} Required</span>
-      {{else}}
-        <span>Level {{level}} {{class}}</span>
-      {{/if}}
-      <br />
-      <em class="small">{{platform}} - {{region}}</em>
-    </td>
-    <td>
-      <p><strong>{{activity}}</strong></p>
-      <p>{{comment}}</p>
-    </td>
-    <td>
-      <p>{{createdAt}}</p>
-      {{#if isMyListing}}
-        <button class="btn btn-danger btn-xs" data-action="remove-listing">Remove My Listing</button>
-      {{/if}}
-    </td>
-  </tr>
-  <tr class="listing-row hidden-sm hidden-md hidden-lg visible-xs-*">
-    <td colspan="5">
-      <p>
-        {{#if isFireteamListing}}
-          <i class="fa fa-users" data-toggle="tooltip" data-placement="right" title="Fireteam looking for gaurdians"></i>
-        {{else}}
-          <i class="fa fa-user" data-toggle="tooltip" data-placement="right" title="Guardian looking for fireteam"></i>
-        {{/if}}
-        <a href="{{profileUrl}}" target="_blank" class="label label-default">{{gamertag}}</a>
+      <div class="gamertag-badges">
+        <a href="{{profileUrl}}" target="_blank" class="label label-default gamertag">{{gamertag}}</a>
         {{#if has_mic}}
           <i class="fa fa-microphone" data-toggle="tooltip" data-placement="bottom" title="Has Microphone"></i>
         {{else}}
@@ -54,24 +18,30 @@
         {{#if has_exp}}
           <i class="fa fa-certificate" data-toggle="tooltip" data-placement="bottom" title="Has Activity Expierence"></i>
         {{/if}}
-        <div class="pull-right">
-          {{#if isFireteamListing}}
-            <span class="label label-default">{{required_fireteam_members}} More Guardian{{#if requiresMoreThanOneMember}}s{{/if}} Required</span>
-          {{else}}
-            <span class="label label-default">Level {{level}} {{class}}</span>
-          {{/if}}
-        </div>
-      </p>
+      </div>
+      <div class="meta">
+        {{#if isFireteamListing}}
+          <span class="label label-default">{{required_fireteam_members}} More Guardian{{#if requiresMoreThanOneMember}}s{{/if}} Required</span>
+        {{else}}
+          <span class="level-class">Level {{level}} {{class}}</span>
+        {{/if}}
+      </div>
+      <div class="platform-region">
+        <span>{{platform}} - {{region}}</span>
+      </div>
+    </td>
+    <td>
       <p><strong>{{activity}}</strong></p>
-      <p><em class="small">{{platform}} - {{region}}</em></p>
       <p>{{comment}}</p>
-      <p class="pull-left">
+    </td>
+    <td>
+      <p class="posted-date">
+        <span class="hidden-sm hidden-md hidden-lg">Posted</span> {{createdAt}}
+      </p>
+      <p class="remove-listing">
         {{#if isMyListing}}
           <button class="btn btn-danger btn-xs" data-action="remove-listing">Remove My Listing</button>
         {{/if}}
-      </p>
-      <p class="pull-right">
-        <em>Posted {{createdAt}}</em>
       </p>
     </td>
   </tr>

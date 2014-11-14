@@ -1,4 +1,5 @@
 @import "../lib/custom.bootstrap.import.less";
+@import "../lib/custom.bootstrap.less";
 
 #actions {
   text-align: center;
@@ -9,12 +10,63 @@
 }
 
 .footer {
-  padding-top: 20px;
+  padding-top: 10px;
   color: @gray-light;
   border-top: 1px solid @gray-lighter;
+  font-size: 13px;
+}
+
+.listing {
+  .platform-region {
+    .small;
+  }
+
+  .gamertag-badges,
+  .meta,
+  .platform-region {
+    margin-bottom: 4px;
+  }
+
+  .meta {
+    .level-class {
+      .small;
+      font-weight: bold;
+    }
+  }
 }
 
 @media (max-width: @screen-sm-min) {
+  #listings {
+    .page-header {
+      border-bottom: none;
+      margin-bottom: 15px;
+      padding: 0;
+    }
+
+    .listing {
+      border-top: 1px solid #dddddd;
+
+      td {
+        display: block;
+        border-top: none;
+      }
+
+      .listing-type {
+        .pull-right;
+      }
+
+      .posted-date {
+        .small;
+        font-style: italic;
+        text-align: right;
+      }
+
+      .remove-listing {
+        text-align: right;
+      }
+    }
+  }
+
   .form-actions {
     text-align: center;
   }
