@@ -63,4 +63,18 @@ Template.listing.events({
 Template.listing.rendered = function () {
   // init tooltips
   this.$('[data-toggle=tooltip]').tooltip();
+  // init popovers
+  this.$('.gamertag').popover({
+    html: true,
+    content: function () {
+      var interactOptions = $(this).parent().find('.interact-options');
+      var content = $(interactOptions.prop('outerHTML'));
+
+      // content is display non by default, make sure it shows in the popover
+      content.css('display', 'block');
+
+      return content;
+    },
+    trigger: 'focus'
+  });
 }

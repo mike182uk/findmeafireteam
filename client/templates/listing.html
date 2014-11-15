@@ -1,15 +1,19 @@
 <template name="listing">
   <tr class="listing">
-    <td class="visible-xs-inline-block visible-sm visible-md visible-lg">
+    <td class="listing-type">
       {{#if isFireteamListing}}
-        <i class="fa fa-users listing-type" data-toggle="tooltip" data-placement="right" title="Fireteam looking for gaurdians"></i>
+        <i class="fa fa-users" data-toggle="tooltip" data-placement="right" title="Fireteam looking for guardians"></i>
       {{else}}
-        <i class="fa fa-user listing-type" data-toggle="tooltip" data-placement="right" title="Guardian looking for fireteam"></i>
+        <i class="fa fa-user" data-toggle="tooltip" data-placement="right" title="Guardian looking for fireteam"></i>
       {{/if}}
     </td>
-    <td class="visible-xs-inline-block visible-sm visible-md visible-lg guardian-details">
-      <a href="{{profileUrl}}" target="_blank" class="label label-default visible-xs-inline visible-sm-inline visible-md-inline visible-lg-inline gamertag">{{gamertag}}</a>
-      <div class="visible-xs-inline-block visible-sm-inline visible-md-inline visible-lg-inline badges">
+    <td>
+      <div class="gamertag-badges">
+        <a class="label label-default gamertag" tabindex="0">{{gamertag}}</a>
+        <div class="interact-options">
+          <button class="btn btn-default btn-s" data-action="send-message">Send Message</button>
+          <a href="{{profileUrl}}" class="btn btn-default btn-s" target="_blank">View Profile</a>
+        </div>
         {{#if has_mic}}
         <i class="fa fa-microphone" data-toggle="tooltip" data-placement="bottom" title="Has Microphone"></i>
         {{else}}
@@ -19,14 +23,14 @@
           <i class="fa fa-certificate" data-toggle="tooltip" data-placement="bottom" title="Has Activity Expierence"></i>
         {{/if}}
       </div>
-      <div class="visible-xs-inline visible-sm visible-md visible-lg misc-info">
+      <div class="meta">
         {{#if isFireteamListing}}
           <span class="label label-default">{{required_fireteam_members}} More Guardian{{#if requiresMoreThanOneMember}}s{{/if}} Required</span>
         {{else}}
-          <span class="guardian-level-class">Level {{level}} {{class}}</span>
+          <span class="level-class">Level {{level}} {{class}}</span>
         {{/if}}
       </div>
-      <div class="visible-xs-block visible-sm visible-md visible-lg core-info">
+      <div class="platform-region">
         <span>{{platform}} - {{region}}</span>
       </div>
     </td>
@@ -35,12 +39,19 @@
       <p>{{comment}}</p>
     </td>
     <td>
-      <p class="posted-date"><span class="hidden-sm hidden-md hidden-lg">Posted</span> {{createdAt}}</p>
-      <p>
+      <p class="posted-date">
+        <span class="hidden-sm hidden-md hidden-lg">Posted</span> {{createdAt}}
+      </p>
+      <p class="remove-listing">
         {{#if isMyListing}}
           <button class="btn btn-danger btn-xs" data-action="remove-listing">Remove My Listing</button>
         {{/if}}
       </p>
     </td>
   </tr>
+  <script>
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+  });
+  </script>
 </template>

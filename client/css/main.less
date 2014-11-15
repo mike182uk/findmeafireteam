@@ -10,9 +10,74 @@
 }
 
 .footer {
-  padding-top: 20px;
+  padding-top: 10px;
   color: @gray-light;
   border-top: 1px solid @gray-lighter;
+  font-size: 13px;
+}
+
+.listing {
+  .interact-options {
+    display: none;
+
+    .btn {
+      display: block;
+      width: 100%;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+  }
+
+  .platform-region {
+    .small;
+  }
+
+  .gamertag-badges,
+  .meta,
+  .platform-region {
+    margin-bottom: 4px;
+  }
+
+  .meta {
+    .level-class {
+      .small;
+      font-weight: bold;
+    }
+  }
+}
+
+#chats {
+  z-index: 999;
+  position: fixed;
+  right: 15px;
+  top: 15px
+}
+
+#chat {
+  .modal-body {
+    padding: 0;
+    background-color: #F9F9F9;
+  }
+
+  #conversation {
+    height: 300px;
+    overflow-y: scroll;
+    padding: 10px;
+
+    p {
+      span {
+        background-color: @gray-lighter;
+        padding: 5px 15px;
+        border-radius: 15px;
+        display: inline-block;
+        max-width: 300px;
+      }
+    }
+
+    .message-recipient {
+      text-align: right;
+    }
+  }
 }
 
 .core-info {
@@ -20,6 +85,37 @@
 }
 
 @media (max-width: @screen-sm-min) {
+  #listings {
+    .page-header {
+      border-bottom: none;
+      margin-bottom: 15px;
+      padding: 0;
+    }
+
+    .listing {
+      border-top: 1px solid #dddddd;
+
+      td {
+        display: block;
+        border-top: none;
+      }
+
+      .listing-type {
+        .pull-right;
+      }
+
+      .posted-date {
+        .small;
+        font-style: italic;
+        text-align: right;
+      }
+
+      .remove-listing {
+        text-align: right;
+      }
+    }
+  }
+
   .form-actions {
     text-align: center;
   }

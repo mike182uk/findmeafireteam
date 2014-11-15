@@ -2,37 +2,38 @@
   <div id="form-fireteam" class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">
-            <span>×</span>
-          </button>
-          <h4 class="modal-title">Form A Fireteam</h4>
-        </div>
-        <div class="modal-body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta dolorum eum nihil aliquam, quidem, eius amet, at cupiditate saepe voluptates voluptate quae non ex! Distinctio cupiditate vitae id quis laborum.</p>
-          <form role="form" id="form-fireteam-form">
+        <form role="form" id="form-fireteam-form">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span>×</span>
+            </button>
+            <h4 class="modal-title">Form A Fireteam</h4>
+          </div>
+          <div class="modal-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta dolorum eum nihil aliquam, quidem, eius amet, at cupiditate saepe voluptates voluptate quae non ex! Distinctio cupiditate vitae id quis laborum.</p>
+
             <div class="form-group">
               <label>Fireteam Leader Gamertag</label>
               <input type="text" class="form-control" name="gamertag" required>
             </div>
             {{> commonFormSelect options=getCoreData.activities name="activity" label="Activity" suboptions="subActivities"}}
             {{> commonFormSelect options=getCoreData.platforms name="platform" label="Platform"}}
-            {{> commonFormSelect options=getCoreData.regions name="region" label="Prefered Region For Gaurdians" anyOption=true}}
+            {{> commonFormSelect options=getCoreData.regions name="region" label="Prefered Region For Guardians" anyOption=true}}
 
             {{#with formId="form-fireteam-form" optionLabelFilter=getRequiredFireteamMembersOptionLabelFilter}}
-              {{> commonFormSelect options=getFireteamSizeOptions name="required_fireteam_members" label="Required Number Of Gaurdians"}}
+              {{> commonFormSelect options=getFireteamSizeOptions name="required_fireteam_members" label="Required Number Of Guardians"}}
             {{/with}}
             <div class="form-group">
               <div class="checkbox">
                 <label>
                   <input type="checkbox" value="1" name="has_exp">
-                  A gaurdian in the fireteam has activity experience
+                  A guardian in the fireteam has activity experience
                 </label>
               </div>
               <div class="checkbox">
                 <label>
                   <input type="checkbox" value="1" name="has_mic">
-                  A gaurdian in the fireteam has a microphone
+                  A guardian in the fireteam has a microphone
                 </label>
               </div>
             </div>
@@ -40,10 +41,12 @@
               <label>Comment</label>
               <textarea name="comment" class="form-control" maxlength="256"></textarea>
             </div>
+          </div>
+          <div class="modal-footer">
             <button type="submit" class="btn btn-default">Add Listing</button>
-            <button type="submit" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
-          </form>
-        </div>
+            <button type="submit" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

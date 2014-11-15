@@ -2,15 +2,16 @@
   <div id="join-fireteam" class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">
-            <span>×</span>
-          </button>
-          <h4 class="modal-title">Join A Fireteam</h4>
-        </div>
-        <div class="modal-body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta dolorum eum nihil aliquam, quidem, eius amet, at cupiditate saepe voluptates voluptate quae non ex! Distinctio cupiditate vitae id quis laborum.</p>
-          <form role="form" id="join-fireteam-form">
+        <form role="form" id="join-fireteam-form">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span>×</span>
+            </button>
+            <h4 class="modal-title">Join A Fireteam</h4>
+          </div>
+          <div class="modal-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta dolorum eum nihil aliquam, quidem, eius amet, at cupiditate saepe voluptates voluptate quae non ex! Distinctio cupiditate vitae id quis laborum.</p>
+
             <div class="form-group">
               <label>Gamertag</label>
               <input type="text" class="form-control" name="gamertag" required>
@@ -38,10 +39,12 @@
               <label>Comment</label>
               <textarea name="comment" class="form-control" maxlength="256"></textarea>
             </div>
+          </div>
+          <div class="modal-footer">
             <button type="submit" class="btn btn-default">Add Listing</button>
-            <button type="submit" class="btn btn-default pull-right" data-dismiss="modal">Cancel</button>
-          </form>
-        </div>
+            <button type="submit" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
