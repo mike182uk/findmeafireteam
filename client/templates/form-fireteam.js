@@ -20,6 +20,7 @@ Template.formFireteam.events({
 
     listingData['type'] = 'fireteam';
     listingData['created_at'] = (new Date).getTime();
+    listingData['user'] = Session.get('user');
     listingData['required_fireteam_members'] = parseInt(listingData['required_fireteam_members']);
 
     var maxFireteamSize = Helpers.getMaxFireteamSizeForActivity(listingData['activity']);

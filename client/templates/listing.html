@@ -11,7 +11,9 @@
       <div class="gamertag-badges">
         <a class="label label-default gamertag" tabindex="0">{{gamertag}}</a>
         <div class="interact-options">
-          <button class="btn btn-default btn-s" data-action="send-message">Send Message</button>
+          {{#unless isMyListing}}
+          <button class="btn btn-default btn-s" data-action="send-message" data-user-id="{{user.id}}">Send Message</button>
+          {{/unless}}
           <a href="{{profileUrl}}" class="btn btn-default btn-s" target="_blank">View Profile</a>
         </div>
         {{#if has_mic}}
@@ -49,9 +51,4 @@
       </p>
     </td>
   </tr>
-  <script>
-  $(function () {
-    $('[data-toggle="popover"]').popover()
-  });
-  </script>
 </template>

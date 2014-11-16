@@ -57,6 +57,21 @@ Template.listing.events({
     // trigger a click on the main remove listing button so we
     // dont have to repeat the logic here
     $('#actions').find('button[data-action=remove-listing]').trigger('click');
+  },
+  'click button[data-action=send-message]': function (e) {
+    var $el = $(e.target);
+    var recipientId = $el.data('user-id');
+    var chatModal = $('#chat');
+
+    // set temp sesison vars
+    Session.setTemp('active_chat', {
+      recipient: {
+        id: recipientId
+      }
+    });
+
+    // show chat modal
+    chatModal.modal('toggle');
   }
 });
 

@@ -1,9 +1,11 @@
 Meteor.startup(function () {
   Meteor.subscribe('listings', function () {
-    // once the data has loaded, update the data last retrieved timestamp
-    // to be now
+    // once the data has loaded, update the data last retrieved timestamp to be now
     Helpers.touchDataLastRetrieved();
   });
+
+  var user = Session.get('user');
+  Meteor.subscribe('chats', user.id);
 });
 
 /**
@@ -12,12 +14,21 @@ Meteor.startup(function () {
 Session.setDefaultPersistent('active_listing_id', null);
 Session.setDefaultTemp('filter_criteria_modified', false);
 Session.setDefaultTemp('filter_params', {});
+Session.setDefaultTemp('active_chat', null);
+Session.setDefaultPersistent('user', { id: uuid.v4() });
 
 /**
  * Make the core data object available in templates
  */
 Template.registerHelper('getCoreData', function () {
   return CoreData;
+});
+
+/**
+ * Make the current user object available in templates
+ */
+Template.registerHelper('currentUser', function () {
+  return Session.get('user');
 });
 
 /**

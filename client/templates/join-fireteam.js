@@ -22,6 +22,7 @@ Template.joinFireteam.events({
 
     listingData['type'] = 'guardian';
     listingData['created_at'] = (new Date).getTime();
+    listingData['user'] = Session.get('user');
 
     try {
       var listingId = Listings.insert(listingData);
