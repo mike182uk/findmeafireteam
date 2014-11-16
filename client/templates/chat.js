@@ -26,7 +26,16 @@ Template.chat.helpers({
 });
 
 Template.chat.events({
+  'show.bs.modal #chat': function (e) {
+    var activeChat = Session.get('active_chat');
+
+    Session.setTemp('chat_' + activeChat.recipient.id + '_last_seen', (new Date).getTime());
+  },
   'hidden.bs.modal #chat': function (e) {
+    var activeChat = Session.get('active_chat');
+
+    Session.setTemp('chat_' + activeChat.recipient.id + '_last_seen', (new Date).getTime());
+
     // reset the current active chat
     Session.setTemp('active_chat', null);
   },
