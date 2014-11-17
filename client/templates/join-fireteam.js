@@ -33,8 +33,8 @@ Template.joinFireteam.events({
       // hide modal
       $modal.modal('hide');
 
-      // load in any new data
-      Helpers.touchDataLastRetrieved();
+      // load in any new listings
+      Helpers.touchListingsLastRetrieved();
     } catch (e) {
 
     }

@@ -3,8 +3,8 @@ Template.listings.helpers({
     var filterParams = Session.get('filter_params');
     var parsedFilterParams = Helpers.parseFilterParams(filterParams);
 
-    // only show data since last retrieval, we will buffer up new data
-    parsedFilterParams['created_at'] = { $lt: Session.get('data_last_retrieved_timestamp') }
+    // only show listings since last retrieval, we will buffer up new listtings
+    parsedFilterParams['created_at'] = { $lt: Session.get('listings_last_retrieved_timestamp') }
 
     return Listings.find(filterParams, {
       sort: {created_at: -1}
@@ -19,7 +19,7 @@ Template.listings.helpers({
     var filterParams = Session.get('filter_params');
     var parsedFilterParams = Helpers.parseFilterParams(filterParams);
 
-    parsedFilterParams['created_at'] = { $gt: Session.get('data_last_retrieved_timestamp') };
+    parsedFilterParams['created_at'] = { $gt: Session.get('listings_last_retrieved_timestamp') };
 
     return Listings.find(parsedFilterParams).count();
   },
@@ -27,12 +27,12 @@ Template.listings.helpers({
     return listingsCount > 1 ? 'listings' : 'listing';
   },
   listingsLoaded: function () {
-    return Session.get('data_last_retrieved_timestamp');
+    return Session.get('listings_last_retrieved_timestamp');
   }
 });
 
 Template.listings.events({
   'click #show-new-listings': function (e) {
-    Helpers.touchDataLastRetrieved();
+    Helpers.touchListingsLastRetrieved();
   }
 })

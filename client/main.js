@@ -1,7 +1,7 @@
 Meteor.startup(function () {
   Meteor.subscribe('listings', function () {
     // once the data has loaded, update the data last retrieved timestamp to be now
-    Helpers.touchDataLastRetrieved();
+    Helpers.touchListingsLastRetrieved();
   });
 
   var user = Session.get('user');
