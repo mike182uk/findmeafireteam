@@ -8,6 +8,9 @@ Meteor.startup(function () {
   Meteor.subscribe('chats', user.id);
 });
 
+/**
+ * Track chat notifcations
+ */
 Tracker.autorun(function () {
   var chatMessages = {};
   var user = Session.get('user');
@@ -17,29 +20,35 @@ Tracker.autorun(function () {
     var sender = _.without(chat.participants, user.id)[0];
     var lastMessageSeenTimestamp = Session.get('chat_' + sender + '_last_seen');
 
+    // if there is no saved timestamp for this chat, set the last seen timestamp
+    // to be a date in the past we can see notifications for this chat
     if ( ! lastMessageSeenTimestamp) {
       var lastMessageSeenTimestamp = (new Date(0)).getTime();
     }
 
+    // if there is currently a chat active, and it is the chat that is being anaylzed,
+    // skip anything to do with working out what notifications to show. whilst the chat
+    // modal is active we dont want to show notifications for this chat (as we are already
+    // in the chat)
     var activeChat = Session.get('active_chat');
     if (activeChat) {
       if (activeChat.recipient.id == sender) {
-        //lastMessageSeenTimestamp = (new Date).getTime();
-        //Session.setTemp('chat_' + sender + '_last_seen', (new Date).getTime());
-        //Session.setTemp('chat_' + sender + '_new_messages', 0);
         return;
       }
     }
 
+    // work out how many new messages there are in a chat since the chat was last seen
     var newMessages = _.filter(chat.messages, function (message) {
       return message.sender == sender && message.created_at > lastMessageSeenTimestamp;
     });
 
-    Session.setTemp('chat_' + sender + '_new_messages', newMessages.length);
+    // update the global messages counter
+    Session.setPersistent('chat_' + sender + '_new_messages', newMessages.length);
     newMessagesTotal += newMessages.length;
   });
 
-  Session.setTemp('new_messages', newMessagesTotal);
+  // set the global messages counter
+  Session.setPersistent('new_messages', newMessagesTotal);
 });
 
 /**

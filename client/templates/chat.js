@@ -29,12 +29,16 @@ Template.chat.events({
   'show.bs.modal #chat': function (e) {
     var activeChat = Session.get('active_chat');
 
-    Session.setTemp('chat_' + activeChat.recipient.id + '_last_seen', (new Date).getTime());
+    // when the chat modal opens, set the chat last seen timestamp to hide any notifcation
+    // badges that are already present
+    Session.setPersistent('chat_' + activeChat.recipient.id + '_last_seen', (new Date).getTime());
   },
   'hidden.bs.modal #chat': function (e) {
     var activeChat = Session.get('active_chat');
 
-    Session.setTemp('chat_' + activeChat.recipient.id + '_last_seen', (new Date).getTime());
+    // when the chat window closes, set the chat last seen timestamp to only show new
+    // message notifications for messages sent after the chat modal has closed
+    Session.setPersistent('chat_' + activeChat.recipient.id + '_last_seen', (new Date).getTime());
 
     // reset the current active chat
     Session.setTemp('active_chat', null);
