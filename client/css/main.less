@@ -1,6 +1,13 @@
 @import "../lib/custom.bootstrap.import.less";
 @import "../lib/custom.bootstrap.less";
 
+#advanced-options {
+  .checkbox {
+    margin-top: 30px;
+    margin-bottom: 0px;
+  }
+}
+
 #actions {
   text-align: center;
 }
@@ -14,6 +21,7 @@
   color: @gray-light;
   border-top: 1px solid @gray-lighter;
   font-size: 13px;
+  text-align: center;
 }
 
 .listing {
@@ -85,6 +93,13 @@
 }
 
 @media (max-width: @screen-sm-min) {
+  #advanced-options {
+    .checkbox {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
+
   #listings {
     .page-header {
       border-bottom: none;
