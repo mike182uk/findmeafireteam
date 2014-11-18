@@ -22,19 +22,17 @@ Template.joinFireteam.events({
 
     listingData['type'] = 'guardian';
     listingData['created_at'] = (new Date).getTime();
-    listingData['user'] = Session.get('user');
+    listingData['user_id'] = User.id();
 
     try {
-      var listingId = Listings.insert(listingData);
-
-      // save listing id to the session
-      Session.setPersistent('active_listing_id', listingId);
+      // create new listing
+      Listings.insert(listingData);
 
       // hide modal
       $modal.modal('hide');
 
-      // load in any new listings
-      Helpers.touchListingsLastRetrieved();
+      // trigger any new listings to show
+      Listings.touchLastRetrieved();
     } catch (e) {
 
     }

@@ -1,6 +1,6 @@
 Template.actions.helpers({
   canCreateNewListing: function () {
-    return Session.get('active_listing_id') == null;
+    return ! User.listing();
   }
 });
 
@@ -12,10 +12,8 @@ Template.actions.events({
       return;
     }
 
-    var listingId = Session.get('active_listing_id');
-
-    Session.setPersistent('active_listing_id', null);
-
-    Listings.remove(listingId);
+    // remove listing
+    var userListing = User.listing();
+    Listings.remove(userListing._id);
   }
 });

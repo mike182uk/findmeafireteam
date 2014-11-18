@@ -4,7 +4,7 @@ Template.listings.helpers({
     var parsedFilterParams = Helpers.parseFilterParams(filterParams);
 
     // only show listings since last retrieval, we will buffer up new listtings
-    parsedFilterParams['created_at'] = { $lt: Session.get('listings_last_retrieved_timestamp') }
+    parsedFilterParams['created_at'] = { $lt: Listings.lastRetrieved() }
 
     return Listings.find(filterParams, {
       sort: {created_at: -1}
@@ -19,7 +19,7 @@ Template.listings.helpers({
     var filterParams = Session.get('filter_params');
     var parsedFilterParams = Helpers.parseFilterParams(filterParams);
 
-    parsedFilterParams['created_at'] = { $gt: Session.get('listings_last_retrieved_timestamp') };
+    parsedFilterParams['created_at'] = { $gt: Listings.lastRetrieved() };
 
     return Listings.find(parsedFilterParams).count();
   },
@@ -27,12 +27,13 @@ Template.listings.helpers({
     return listingsCount > 1 ? 'listings' : 'listing';
   },
   listingsLoaded: function () {
-    return Session.get('listings_last_retrieved_timestamp');
+    return Listings.lastRetrieved();
   }
 });
 
 Template.listings.events({
   'click #show-new-listings': function (e) {
-    Helpers.touchListingsLastRetrieved();
+    // trigger any new listings to show
+    Listings.touchLastRetrieved();
   }
 })

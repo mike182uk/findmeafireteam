@@ -12,9 +12,7 @@ if (Listings.find().count() === 0) {
     listing['has_mic'] = _.random(1);
     listing['has_exp'] = _.random(1);
     listing['created_at'] = new Date((new Date).getTime() - _.random(1, 60) * 60000).getTime();
-    listing['user'] = {
-      id: uuid.v4()
-    };
+    listing['user_id'] = uuid.v4();
 
     var types = ['guardian', 'fireteam'];
     listing['type'] = _.sample(types);

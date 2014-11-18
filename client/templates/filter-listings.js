@@ -27,8 +27,8 @@ Template.filterListings.events({
       // reset criteria notification on listings form
       Session.setTemp('filter_criteria_modified', false);
 
-      // load in any new listings
-      Helpers.touchListingsLastRetrieved();
+      // trigger any new listings to show
+      Listings.touchLastRetrieved();
     }, 100);
 
     // remove any stored filter params from the session
@@ -49,8 +49,8 @@ Template.filterListings.events({
     // reset criteria notification on listings form
     Session.setTemp('filter_criteria_modified', false);
 
-    // load in any new listings
-    Helpers.touchListingsLastRetrieved();
+    // trigger any new listings to show
+    Listings.touchLastRetrieved();
   },
   'change :input': function () {
     Session.setTemp('filter_criteria_modified', true);
@@ -76,7 +76,7 @@ Template.filterListings.helpers({
     return Session.get('filter_criteria_modified');
   },
   filteringDisabled: function () {
-    return ! Session.get('listings_last_retrieved_timestamp') ? 'disabled' : '';
+    return ! Listings.lastRetrieved() ? 'disabled' : '';
   }
 });
 

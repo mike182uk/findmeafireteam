@@ -7,12 +7,12 @@
             <button type="button" class="close" data-dismiss="modal">
               <span>×</span>
             </button>
-            <h4 class="modal-title">Chat with {{name}}</h4>
+            <h4 class="modal-title">Chat with {{recipient}}</h4>
           </div>
           <div class="modal-body">
             <div id="chat-history">
               {{#each messages}}
-              <p class="{{messageClass this}}"><span>{{content}}</span></p>
+              <p class="{{messageClass}}"><span>{{content}}</span></p>
               {{/each}}
             </div>
           </div>

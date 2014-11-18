@@ -1,26 +1,19 @@
 Template.chats.helpers({
-  hasChats: function () {
-    return Chats.find().count();
-  },
-  getChats: function () {
+  chats: function () {
     return Chats.find();
   },
-  getRecipient: function () {
-    var user = Session.get('user');
-
-    return _.without(this.participants, user.id)[0];
-  },
-  hasNewMessages: function () {
-    return Session.get('new_messages') > 0;
+  recipient: function () {
+    return _.without(this.participants, User.id())[0];
   },
   newMessagesCount: function () {
-    return Session.get('new_messages');
-  },
-  chatHasNewMessages: function (recipient) {
-    return Session.get('chat_' + recipient + '_new_messages') > 0;
+    var chatStateNewMessages = Session.get('chats_new_messages');
+
+    return chatStateNewMessages.total;
   },
   chatNewMessagesCount: function (recipient) {
-    return Session.get('chat_' + recipient + '_new_messages');
+    var chatStateNewMessages = Session.get('chats_new_messages');
+
+    return chatStateNewMessages.chats[recipient];
   }
 });
 
@@ -34,9 +27,7 @@ Template.chats.events({
 
     // set temp sesison vars
     Session.setTemp('active_chat', {
-      recipient: {
-        id: recipientId
-      }
+      recipient_id: recipientId
     });
 
     // show chat modal

@@ -1,13 +1,13 @@
 <template name="chats">
-  {{#if hasChats}}
+  {{#if chats.count}}
     <div class="btn-group" id="chats">
       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-        <i class="fa fa-comments"></i> Chats {{#if hasNewMessages}}<span class="badge">{{newMessagesCount}}</span>{{/if}} <span class="caret"></span>
+        <i class="fa fa-comments"></i> Chats {{#if newMessagesCount}}<span class="badge">{{newMessagesCount}}</span>{{/if}} <span class="caret"></span>
       </button>
       <ul class="dropdown-menu dropdown-menu-right" role="menu">
-        {{#each getChats}}
+        {{#each chats}}
         <li>
-          <a href="#" data-action="send-message" data-user-id="{{getRecipient this}}">{{getRecipient this}} {{#if chatHasNewMessages getRecipient this}}<span class="badge">{{chatNewMessagesCount getRecipient this}}</span>{{/if}}</a>
+          <a href="#" data-action="send-message" data-user-id="{{recipient}}">{{recipient}} {{#if chatNewMessagesCount recipient}}<span class="badge">{{chatNewMessagesCount recipient}}</span>{{/if}}</a>
         </li>
         {{/each}}
       </ul>

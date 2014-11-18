@@ -1,29 +1,31 @@
 Meteor.startup(function () {
   Meteor.subscribe('listings', function () {
-    // once the data has loaded, update the data last retrieved timestamp to be now
-    Helpers.touchListingsLastRetrieved();
+    // once the listings have loaded, update the listings last retrieved timestamp to be now
+    Listings.touchLastRetrieved();
   });
 
-  var user = Session.get('user');
-  Meteor.subscribe('chats', user.id);
+  Meteor.subscribe('chats', User.id());
 });
 
 /**
  * Track chat notifcations
  */
 Tracker.autorun(function () {
-  var chatMessages = {};
-  var user = Session.get('user');
-  var newMessagesTotal = 0;
+  var chatsNewMessages = {
+    total: 0,
+    chats: {}
+  }
+
+  var chatLastSeen = Session.get('chats_last_seen');
 
   _.each(Chats.find().fetch(), function (chat) {
-    var sender = _.without(chat.participants, user.id)[0];
-    var lastMessageSeenTimestamp = Session.get('chat_' + sender + '_last_seen');
+    var sender = _.without(chat.participants, User.id())[0];
+    var lastSeenTimestamp = chatLastSeen[sender];
 
     // if there is no saved timestamp for this chat, set the last seen timestamp
     // to be a date in the past we can see notifications for this chat
-    if ( ! lastMessageSeenTimestamp) {
-      var lastMessageSeenTimestamp = (new Date(0)).getTime();
+    if ( ! lastSeenTimestamp) {
+      var lastSeenTimestamp = (new Date(0)).getTime();
     }
 
     // if there is currently a chat active, and it is the chat that is being anaylzed,
@@ -32,46 +34,41 @@ Tracker.autorun(function () {
     // in the chat)
     var activeChat = Session.get('active_chat');
     if (activeChat) {
-      if (activeChat.recipient.id == sender) {
+      if (activeChat.recipient_id == sender) {
         return;
       }
     }
 
     // work out how many new messages there are in a chat since the chat was last seen
     var newMessages = _.filter(chat.messages, function (message) {
-      return message.sender == sender && message.created_at > lastMessageSeenTimestamp;
+      return message.sender == sender && message.created_at > lastSeenTimestamp;
     });
 
-    // update the global messages counter
-    Session.setPersistent('chat_' + sender + '_new_messages', newMessages.length);
-    newMessagesTotal += newMessages.length;
+    chatsNewMessages.chats[sender] = newMessages.length;
+    chatsNewMessages.total += newMessages.length;
   });
 
-  // set the global messages counter
-  Session.setPersistent('new_messages', newMessagesTotal);
+  Session.setTemp('chats_new_messages', chatsNewMessages);
 });
 
 /**
- * Initialize session vars
+ * Initialise session vars
  */
-Session.setDefaultPersistent('active_listing_id', null);
 Session.setDefaultTemp('filter_criteria_modified', false);
 Session.setDefaultTemp('filter_params', {});
 Session.setDefaultTemp('active_chat', null);
-Session.setDefaultPersistent('user', { id: uuid.v4() });
+Session.setDefaultPersistent('chats_last_seen', {});
+
+/**
+ * Initialise the user
+ */
+User.init();
 
 /**
  * Make the core data object available in templates
  */
 Template.registerHelper('getCoreData', function () {
   return CoreData;
-});
-
-/**
- * Make the current user object available in templates
- */
-Template.registerHelper('currentUser', function () {
-  return Session.get('user');
 });
 
 /**

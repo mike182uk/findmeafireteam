@@ -1,27 +1,28 @@
 Template.chat.helpers({
-  name: function () {
+  recipient: function () {
     var activeChat = Session.get('active_chat');
 
-    if (! activeChat) return '';
+    if (! activeChat) {
+      return '';
+    }
 
-    return activeChat.recipient.id;
+    return activeChat.recipient_id;
   },
   messages: function () {
     var activeChat = Session.get('active_chat');
-    var user = Session.get('user');
+    if (! activeChat) {
+      return [];
+    }
 
-    if (! activeChat) return [];
-
-    var chat = Helpers.findChatByParticipants([user.id, activeChat.recipient.id]);
-
-    if (! chat) return [];
+    var chat = Chats.findChatByParticipants([User.id(), activeChat.recipient_id]);
+    if (! chat) {
+      return [];
+    }
 
     return chat.messages;
   },
   messageClass: function() {
-    var user = Session.get('user');
-
-    return this.sender == user.id ? 'message-sender' : 'message-recipient';
+    return this.sender == User.id() ? 'message-sender' : 'message-recipient';
   }
 });
 
@@ -31,14 +32,18 @@ Template.chat.events({
 
     // when the chat modal opens, set the chat last seen timestamp to hide any notifcation
     // badges that are already present
-    Session.setPersistent('chat_' + activeChat.recipient.id + '_last_seen', (new Date).getTime());
+    var chatsLastSeen = Session.get('chats_last_seen');
+    chatsLastSeen[activeChat.recipient_id] = (new Date).getTime();
+    Session.setPersistent('chats_last_seen', chatsLastSeen);
   },
   'hidden.bs.modal #chat': function (e) {
     var activeChat = Session.get('active_chat');
 
     // when the chat window closes, set the chat last seen timestamp to only show new
     // message notifications for messages sent after the chat modal has closed
-    Session.setPersistent('chat_' + activeChat.recipient.id + '_last_seen', (new Date).getTime());
+    var chatsLastSeen = Session.get('chats_last_seen');
+    chatsLastSeen[activeChat.recipient_id] = (new Date).getTime();
+    Session.setPersistent('chats_last_seen', chatsLastSeen);
 
     // reset the current active chat
     Session.setTemp('active_chat', null);
@@ -47,15 +52,14 @@ Template.chat.events({
     e.preventDefault();
 
     var $el = $(e.target);
-
     var $message = $el.find(':input[name=message]');
     var message = $message.val();
 
     var activeChat = Session.get('active_chat');
-    var user = Session.get('user');
-    var chatParticipants = [user.id, activeChat.recipient.id];
-    var chat = Helpers.findChatByParticipants(chatParticipants);
+    var chatParticipants = [User.id(), activeChat.recipient_id];
+    var chat = Chats.findChatByParticipants(chatParticipants);
 
+    // set chat data
     if (! chat) {
       var chatData = {};
       chatData['participants'] = chatParticipants;
@@ -64,15 +68,17 @@ Template.chat.events({
 
     // set message data
     var messageData = {};
-    messageData['sender'] = user.id;
+    messageData['sender'] = User.id();
     messageData['created_at'] = (new Date).getTime();
     messageData['content'] = message;
 
     try {
+      // if a chat does not exist, create it
       if (! chat) {
         chatData.messages.push(messageData);
 
         Chats.insert(chatData);
+      // if a chat does exist, update the the messages
       } else {
         chat.messages.push(messageData);
 

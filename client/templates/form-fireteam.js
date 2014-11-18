@@ -20,23 +20,21 @@ Template.formFireteam.events({
 
     listingData['type'] = 'fireteam';
     listingData['created_at'] = (new Date).getTime();
-    listingData['user'] = Session.get('user');
+    listingData['user_id'] = User.id();
     listingData['required_fireteam_members'] = parseInt(listingData['required_fireteam_members']);
 
     var maxFireteamSize = Helpers.getMaxFireteamSizeForActivity(listingData['activity']);
     listingData['fireteam_size'] = maxFireteamSize - listingData['required_fireteam_members'];
 
     try {
-      var listingId = Listings.insert(listingData);
-
-      // save listing id to the session
-      Session.setPersistent('active_listing_id', listingId);
+      // create new listing
+      Listings.insert(listingData);
 
       // hide modal
       $modal.modal('hide');
 
-      // load in any new listings
-      Helpers.touchListingsLastRetrieved();
+      // trigger any new listings to show
+      Listings.touchLastRetrieved();
     } catch (e) {
 
     }

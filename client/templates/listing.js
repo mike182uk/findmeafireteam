@@ -1,24 +1,20 @@
 Template.listing.helpers({
   platform: function () {
-    var platformKey = this.platform;
-    var platform = _.findWhere(CoreData.platforms, { key: platformKey });
+    var platform = _.findWhere(CoreData.platforms, { key: this.platform });
 
     return platform.label;
   },
   region: function () {
-    var regionKey = this.region;
-
-    if (regionKey == 'any') {
+    if (this.region == 'any') {
       return 'Anywhere';
     }
 
-    var region = _.findWhere(CoreData.regions, { key: regionKey });
+    var region = _.findWhere(CoreData.regions, { key: this.region });
 
     return region.label;
   },
   class: function () {
-    var classKey = this.class;
-    var klass = _.findWhere(CoreData.classes, { key: classKey });
+    var klass = _.findWhere(CoreData.classes, { key: this.class });
 
     return klass.label;
   },
@@ -48,7 +44,13 @@ Template.listing.helpers({
     return this.required_fireteam_members > 1;
   },
   isMyListing: function () {
-    return this._id == Session.get('active_listing_id');
+    var userListing = User.listing();
+
+    if (userListing) {
+      return this._id == userListing._id;
+    }
+
+    return false;
   }
 });
 
@@ -65,9 +67,7 @@ Template.listing.events({
 
     // set temp sesison vars
     Session.setTemp('active_chat', {
-      recipient: {
-        id: recipientId
-      }
+      recipient_id: recipientId
     });
 
     // show chat modal
