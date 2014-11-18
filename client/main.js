@@ -49,6 +49,14 @@ Tracker.autorun(function () {
   });
 
   Session.setTemp('chats_new_messages', chatsNewMessages);
+
+  // add new messages count to the page title
+  var title = $('title');
+  if (chatsNewMessages.total > 0) {
+    title.text('(' + chatsNewMessages.total + ') ' + title.data('content'));
+  } else {
+    title.text(title.data('content'));
+  }
 });
 
 /**
@@ -57,6 +65,7 @@ Tracker.autorun(function () {
 Session.setDefaultTemp('filter_criteria_modified', false);
 Session.setDefaultTemp('filter_params', {});
 Session.setDefaultTemp('active_chat', null);
+Session.setDefaultTemp('chats_new_messages', {});
 Session.setDefaultPersistent('chats_last_seen', {});
 
 /**
