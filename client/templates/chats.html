@@ -7,7 +7,7 @@
       <ul class="dropdown-menu dropdown-menu-right" role="menu">
         {{#each chats}}
         <li>
-          <a href="#" data-action="send-message" data-user-id="{{recipient}}">{{recipient}} {{#if chatNewMessagesCount recipient}}<span class="badge">{{chatNewMessagesCount recipient}}</span>{{/if}}</a>
+          <a href="#" data-action="send-message" data-user-id="{{recipient}}">{{recipientAlias recipient}} {{#if chatNewMessagesCount recipient}}<span class="badge">{{chatNewMessagesCount recipient}}</span>{{/if}}</a>
         </li>
         {{/each}}
       </ul>

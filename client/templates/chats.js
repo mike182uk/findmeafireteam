@@ -5,6 +5,11 @@ Template.chats.helpers({
   recipient: function () {
     return _.without(this.participants, User.id())[0];
   },
+  recipientAlias: function (recipient) {
+    var alias = Helpers.getChatRecipientAlias(recipient);
+
+    return alias ? alias : recipient;
+  },
   newMessagesCount: function () {
     var chatStateNewMessages = Session.get('chats_new_messages');
 

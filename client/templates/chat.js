@@ -1,12 +1,14 @@
 Template.chat.helpers({
-  recipient: function () {
+  recipientAlias: function () {
     var activeChat = Session.get('active_chat');
 
     if (! activeChat) {
       return '';
     }
 
-    return activeChat.recipient_id;
+    var alias = Helpers.getChatRecipientAlias(activeChat.recipient_id);
+
+    return alias ? alias : activeChat.recipient_id;
   },
   messages: function () {
     var activeChat = Session.get('active_chat');
