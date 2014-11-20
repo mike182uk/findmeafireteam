@@ -12,11 +12,13 @@ Template.chat.helpers({
   },
   messages: function () {
     var activeChat = Session.get('active_chat');
+
     if (! activeChat) {
       return [];
     }
 
     var chat = Chats.findChatByParticipants([User.id(), activeChat.recipient_id]);
+
     if (! chat) {
       return [];
     }
@@ -24,7 +26,7 @@ Template.chat.helpers({
     return chat.messages;
   },
   messageClass: function() {
-    return this.sender == User.id() ? 'message-sender' : 'message-recipient';
+    return this.sender == User.id() ? 'message-from-sender' : 'message-from-recipient';
   }
 });
 
@@ -32,7 +34,7 @@ Template.chat.events({
   'show.bs.modal #chat': function (e) {
     var activeChat = Session.get('active_chat');
 
-    // when the chat modal opens, set the chat last seen timestamp to hide any notifcation
+    // when the chat modal opens, set the chat last seen timestamp to hide any notification
     // badges that are already present
     var chatsLastSeen = Session.get('chats_last_seen');
     chatsLastSeen[activeChat.recipient_id] = (new Date).getTime();
@@ -41,7 +43,7 @@ Template.chat.events({
   'hidden.bs.modal #chat': function (e) {
     var activeChat = Session.get('active_chat');
 
-    // when the chat window closes, set the chat last seen timestamp to only show new
+    // when the chat modal closes, set the chat last seen timestamp to only show new
     // message notifications for messages sent after the chat modal has closed
     var chatsLastSeen = Session.get('chats_last_seen');
     chatsLastSeen[activeChat.recipient_id] = (new Date).getTime();
@@ -80,7 +82,7 @@ Template.chat.events({
         chatData.messages.push(messageData);
 
         Chats.insert(chatData);
-      // if a chat does exist, update the the messages
+      // if a chat does exist, just update the the messages
       } else {
         chat.messages.push(messageData);
 
@@ -91,10 +93,10 @@ Template.chat.events({
         });
       }
     } catch (e) {
-
+      // @todo do something with this error
     }
 
-    // clear the input and unfocus
+    // clear the input
     $message.val('');
   },
   'keypress :input[name=message]': function (e) {

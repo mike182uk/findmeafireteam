@@ -3,7 +3,7 @@ Meteor.publish('listings', function() {
 });
 
 Meteor.publish('chats', function(userId) {
-  // only chats that the user has participated in
+  // only return chats that the user has participated in
   return Chats.find({
     participants: { $in: [userId] }
   });

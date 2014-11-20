@@ -1,0 +1,75 @@
+@import "../lib/custom.bootstrap.import.less";
+@import "../lib/custom.bootstrap.less";
+
+.listing {
+  .interact {
+    display: none;
+
+    .btn {
+      display: block;
+      width: 100%;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+
+    > :first-child {
+      margin-bottom: 10px;
+    }
+  }
+
+  .platform-region {
+    .small;
+  }
+
+  .gamertag-badges,
+  .meta,
+  .platform-region {
+    margin-bottom: 4px;
+  }
+
+  .meta {
+    .level-class {
+      .small;
+      font-weight: bold;
+    }
+  }
+
+  .core-info {
+    .small;
+  }
+}
+
+@media (max-width: @screen-sm-min) {
+  #listings {
+    .page-header {
+      border-bottom: none;
+      margin-bottom: 15px;
+      padding: 0;
+    }
+
+    .listing {
+      td {
+        display: block;
+        border-top: none;
+      }
+    }
+  }
+
+  .listing {
+    border-top: 1px solid #dddddd;
+
+    .listing-type {
+      .pull-right;
+    }
+
+    .posted-date {
+      .small;
+      font-style: italic;
+      text-align: right;
+    }
+
+    .remove-listing {
+      text-align: right;
+    }
+  }
+}

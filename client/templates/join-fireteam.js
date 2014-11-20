@@ -34,7 +34,7 @@ Template.joinFireteam.events({
       // trigger any new listings to show
       Listings.touchLastRetrieved();
     } catch (e) {
-
+      // @todo do something with this error
     }
   }
 });

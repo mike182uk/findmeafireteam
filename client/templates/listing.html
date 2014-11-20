@@ -10,12 +10,6 @@
     <td>
       <div class="gamertag-badges">
         <a class="label label-default gamertag" tabindex="0">{{gamertag}}</a>
-        <div class="interact-options">
-          {{#unless isMyListing}}
-          <button class="btn btn-default btn-s" data-action="send-message" data-user-id="{{user_id}}">Send Message</button>
-          {{/unless}}
-          <a href="{{profileUrl}}" class="btn btn-default btn-s" target="_blank">View Profile</a>
-        </div>
         {{#if has_mic}}
         <i class="fa fa-microphone" data-toggle="tooltip" data-placement="bottom" title="Has Microphone"></i>
         {{else}}
@@ -34,6 +28,12 @@
       </div>
       <div class="platform-region">
         <span>{{platform}} - {{region}}</span>
+      </div>
+      <div class="interact">
+        {{#unless isMyListing}}
+        <button class="btn btn-default btn-s" data-action="send-message" data-user-id="{{user_id}}">Send Message</button>
+        {{/unless}}
+        <a href="{{profileUrl}}" class="btn btn-default btn-s" target="_blank">View Profile</a>
       </div>
     </td>
     <td>

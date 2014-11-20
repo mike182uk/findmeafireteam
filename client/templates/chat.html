@@ -10,9 +10,9 @@
             <h4 class="modal-title">Chat with {{recipientAlias}}</h4>
           </div>
           <div class="modal-body">
-            <div id="chat-history">
+            <div id="chat-messages">
               {{#each messages}}
-              <p class="{{messageClass}}"><span>{{content}}</span></p>
+              <p class="{{messageClass}} chat-message"><span class="message-content">{{content}}</span></p>
               {{/each}}
             </div>
           </div>

@@ -1,0 +1,40 @@
+@import "../lib/custom.bootstrap.import.less";
+@import "../lib/custom.bootstrap.less";
+
+#chats {
+  z-index: 999;
+  position: fixed;
+  right: 15px;
+  top: 15px
+}
+
+#chat {
+  .modal-body {
+    padding: 0;
+    background-color: #F9F9F9;
+  }
+
+  #chat-messages {
+    height: 300px;
+    overflow-y: scroll;
+    padding: 10px;
+
+    .chat-message {
+      .message-content {
+        background-color: @gray-lighter;
+        padding: 5px 15px;
+        border-radius: 15px;
+        display: inline-block;
+        max-width: 300px;
+      }
+    }
+
+    .message-from-sender {
+
+    }
+
+    .message-from-recipient {
+      text-align: right;
+    }
+  }
+}

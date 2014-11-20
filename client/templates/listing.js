@@ -82,7 +82,7 @@ Template.listing.rendered = function () {
   this.$('.gamertag').popover({
     html: true,
     content: function () {
-      var interactOptions = $(this).parent().find('.interact-options');
+      var interactOptions = $(this).parents('td').find('.interact');
       var content = $(interactOptions.prop('outerHTML'));
 
       // content is display non by default, make sure it shows in the popover

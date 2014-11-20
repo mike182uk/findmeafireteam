@@ -12,7 +12,6 @@ Template.actions.events({
       return;
     }
 
-    // remove listing
     var userListing = User.listing();
     Listings.remove(userListing._id);
   }
