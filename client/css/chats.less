@@ -5,7 +5,14 @@
   z-index: 999;
   position: fixed;
   right: 15px;
-  top: 15px
+  top: 15px;
+
+  .chat-recipient {
+    .badge {
+      background-color: @brand-danger;
+      color: #FFF;
+    }
+  }
 }
 
 #chat {
@@ -30,7 +37,10 @@
     }
 
     .message-from-sender {
-
+      .message-content {
+        background-color: @brand-primary;
+        color: #FFF;
+      }
     }
 
     .message-from-recipient {

@@ -9,7 +9,7 @@
     </td>
     <td>
       <div class="gamertag-badges">
-        <a class="label label-default gamertag" tabindex="0">{{gamertag}}</a>
+        <a class="label label-primary gamertag" tabindex="0">{{gamertag}}</a>
         {{#if has_mic}}
         <i class="fa fa-microphone" data-toggle="tooltip" data-placement="bottom" title="Has Microphone"></i>
         {{else}}
@@ -21,7 +21,7 @@
       </div>
       <div class="meta">
         {{#if isFireteamListing}}
-          <span class="label label-default">{{required_fireteam_members}} More Guardian{{#if requiresMoreThanOneMember}}s{{/if}} Required</span>
+          <span class="label label-warning">{{required_fireteam_members}} More Guardian{{#if requiresMoreThanOneMember}}s{{/if}} Required</span>
         {{else}}
           <span class="level-class">Level {{level}} {{class}}</span>
         {{/if}}
@@ -31,9 +31,9 @@
       </div>
       <div class="interact">
         {{#unless isMyListing}}
-        <button class="btn btn-default btn-s" data-action="send-message" data-user-id="{{user_id}}">Send Message</button>
+        <button class="btn btn-primary btn-s" data-action="send-message" data-user-id="{{user_id}}">Send Message</button>
         {{/unless}}
-        <a href="{{profileUrl}}" class="btn btn-default btn-s" target="_blank">View Profile</a>
+        <a href="{{profileUrl}}" class="btn btn-primary btn-s" target="_blank">View Profile</a>
       </div>
     </td>
     <td>
