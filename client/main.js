@@ -60,13 +60,13 @@ Tracker.autorun(function () {
 });
 
 /**
- * Initialise session vars
+ * Initialise the session
  */
-Session.setDefaultTemp('filter_criteria_modified', false);
-Session.setDefaultTemp('filter_params', {});
-Session.setDefaultTemp('active_chat', null);
-Session.setDefaultTemp('chats_new_messages', {});
-Session.setDefaultPersistent('chats_last_seen', {});
+ Session.setDefaultTemp('filter_criteria_modified', false);
+ Session.setDefaultTemp('filter_params', {});
+ Session.setDefaultTemp('active_chat', null);
+ Session.setDefaultTemp('chats_new_messages', {});
+ Session.setDefaultPersistent('chats_last_seen', {});
 
 /**
  * Initialise the user
