@@ -1,7 +1,7 @@
 var chance = new Chance;
 
 if (Listings.find().count() === 0) {
-  for (var i = 1; i <= _.random(15, 40); i++) {
+  for (var i = 1; i <= _.random(25, 60); i++) {
     var listing = {};
 
     listing['gamertag'] = chance.name().replace(' ', '');
@@ -11,7 +11,7 @@ if (Listings.find().count() === 0) {
     listing['activity'] = _.sample(Helpers.getActivityKeys());
     listing['has_mic'] = _.random(1);
     listing['has_exp'] = _.random(1);
-    listing['created_at'] = new Date((new Date).getTime() - (_.random(1, 60) * 60000)).getTime();
+    listing['created_at'] = (moment().subtract(_.random(1, 80), 'minutes').toDate()).getTime();
     listing['user_id'] = User.generateId();
 
     var types = ['guardian', 'fireteam'];
