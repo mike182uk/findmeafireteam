@@ -69,6 +69,6 @@ Tracker.autorun(function () {
  Session.setDefaultPersistent('chats_last_seen', {});
 
 /**
- * Initialise the user
+ * Initialis  e the user
  */
 User.init();

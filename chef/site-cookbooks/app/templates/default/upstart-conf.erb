@@ -1,0 +1,19 @@
+description "<%= @app["name"] %> app"
+
+start on started mongodb and runlevel [2345]
+
+stop on shutdown
+
+respawn
+respawn limit 10 5
+
+setuid <%= @app["system"]["user"]["name"] %>
+setgid <%= @app["system"]["user"]["group"] %>
+
+script
+    export PORT=<%= @app["meteor"]["port"] %>
+    export MONGO_URL=mongodb://localhost:27017/<%= @app["mongo"]["db_name"] %>
+    export ROOT_URL=<%= @app["site_url"] %>
+
+    exec node <%= @app["location"] %>/bundle/main.js
+end script
