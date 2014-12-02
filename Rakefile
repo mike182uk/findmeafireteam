@@ -7,6 +7,16 @@ $build_tar_path = "/tmp/#{$build_tar}"
 $remote_build_tar_path = "/tmp/#{$build_tar}"
 $remote_app_path = "/var/www/findmeafireteam"
 
+desc "Bootstrap a remote server for provisioning"
+task :bootstrap, [:host, :username, :password] do |task, args|
+  system "cd chef && /usr/bin/knife solo prepare --ssh-password=#{args[:password]} --node-name=findmeafireteam.com #{args[:username]}@#{args[:host]}"
+end
+
+desc "Provision a remote server"
+task :provision, [:host, :username, :password] do |task, args|
+  system "cd chef && /usr/bin/knife solo cook --config=knife.rb --ssh-password=#{args[:password]} #{args[:username]}@#{args[:host]} nodes/findmeafireteam.com.json"
+end
+
 desc "Build and deploy the app to a remote server"
 task :deploy, [:host, :username, :password] do |task, args|
   puts "building app..."
