@@ -4,7 +4,6 @@
   "json_class": "Chef::Role",
   "run_list": [
     "recipe[app::system-user]",
-    "recipe[app::location]",
     "recipe[app::vhost]",
     "recipe[app::service]"
   ]
