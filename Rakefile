@@ -1,62 +1,67 @@
 require "net/scp"
 require "net/ssh"
 
-$build_dir = "/tmp/findmeafireteam-build"
+$build_dir = "/tmp/findmeafireteam-app-build"
 $build_tar = "findmeafireteam.tgz"
 $build_tar_path = "/tmp/#{$build_tar}"
 $remote_build_tar_path = "/tmp/#{$build_tar}"
 $remote_app_path = "/var/www/findmeafireteam"
 
-task :deploy_local do
-  # build app
+desc "Build and deploy the app to a remote server"
+task :deploy, [:host, :username, :password] do |task, args|
+  puts "building app..."
   build
 
-  # upload build
-  Net::SCP.start("33.33.33.32", "vagrant", :password => "vagrant") do |scp|
+  Net::SCP.start(args[:host], args[:username], :password => args[:password]) do |scp|
+    puts "uploading build to remote server [#{args[:username]}@#{args[:host]}]"
     scp.upload! $build_tar_path, "/tmp/#{$build_tar}"
   end
 
-  Net::SSH.start("33.33.33.32", "vagrant", :password => "vagrant") do |ssh|
-    # stop the service
+  Net::SSH.start(args[:host], args[:username], :password => args[:password]) do |ssh|
+    remote_status args, "Stopping the service..."
     ssh.exec! "sudo stop findmeafireteam"
 
-    # remove existing app
+    remote_status args, "Removing the existing app..."
     ssh.exec! "sudo rm -rf #{$remote_app_path}"
 
-    # recreate app directory
+    remote_status args, "Re-building the app directory..."
     ssh.exec! "sudo mkdir -p #{$remote_app_path}"
 
-    # untar build into correct location
+    remote_status args, "Extracting build into the correct location..."
     ssh.exec! "sudo tar -xf #{$remote_build_tar_path} -C #{$remote_app_path}"
 
-    # install node modules
+    remote_status args, "Installing required node modules..."
     ssh.exec! "cd #{$remote_app_path}/bundle/programs/server && sudo npm install"
 
-    # set the correct permissions
+    remote_status args, "Applying permissions..."
     ssh.exec! "sudo chown -R findmeafireteam:findmeafireteam #{$remote_app_path}"
 
-    # remove uploaded build tar
+    remote_status args, "Cleaning up..."
     ssh.exec! "sudo rm #{$remote_build_tar_path}"
 
-    # start the service
+    remote_status args, "Starting the service..."
     ssh.exec! "sudo start findmeafireteam"
   end
 
+  puts "cleaning up..."
   cleanup_local
+
+  puts "done!"
 end
 
 def build
-  # remove any left overs from the last build
-  cleanup_local
-
   # build app via meteor
-  sh "cd app && meteor build --directory #{$build_dir}"
+  system "cd app && meteor build --directory #{$build_dir}"
 
   # create build tarball to be uploaded
-  sh "cd #{$build_dir} && tar -zcf ../#{$build_tar} ."
+  system "cd #{$build_dir} && tar -zcf ../#{$build_tar} ."
 end
 
 def cleanup_local
-  sh "rm -rf #{$build_tar_path}"
-  sh "rm -rf #{$build_dir}"
+  system "rm -rf #{$build_tar_path}"
+  system "rm -rf #{$build_dir}"
+end
+
+def remote_status(args, message)
+  puts "[#{args[:username]}@#{args[:host]}] #{message}"
 end
