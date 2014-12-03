@@ -11,6 +11,7 @@ check@1.0.2
 chrismbeckett:fontawesome4@4.2.2
 ctl-helper@1.0.4
 ctl@1.0.2
+datariot:ganalytics@0.2.0
 ddp@1.0.11
 deps@1.0.5
 ejson@1.0.4

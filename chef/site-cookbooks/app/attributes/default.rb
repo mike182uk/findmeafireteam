@@ -1,8 +1,6 @@
 default["app"]["name"] = "findmeafireteam"
 default["app"]["site_url"] = "http://findmeafireteam.com"
 
-default["app"]["location"] = "/var/www/findmeafireteam"
-
 default["app"]["meteor"]["host"] = "127.0.0.1"
 default["app"]["meteor"]["port"] = "3000"
 

@@ -7,6 +7,17 @@ $build_tar_path = "/tmp/#{$build_tar}"
 $remote_build_tar_path = "/tmp/#{$build_tar}"
 $remote_app_path = "/var/www/findmeafireteam"
 
+desc "Start up meteor ready for development"
+task :app_dev do
+  system "cd app && meteor --settings settings.json"
+end
+
+desc "Build the app"
+task :build do
+  build
+  puts "App build available at #{$build_tar_path}"
+end
+
 desc "Bootstrap a remote server for provisioning"
 task :bootstrap, [:host, :username, :password] do |task, args|
   system "cd chef && /usr/bin/knife solo prepare --ssh-password=#{args[:password]} --node-name=findmeafireteam.com #{args[:username]}@#{args[:host]}"
@@ -62,6 +73,9 @@ end
 def build
   # build app via meteor
   system "cd app && meteor build --directory #{$build_dir}"
+
+  # add settings to the build
+  system "cp app/settings.json #{$build_dir}/bundle/settings.json"
 
   # create build tarball to be uploaded
   system "cd #{$build_dir} && tar -zcf ../#{$build_tar} ."

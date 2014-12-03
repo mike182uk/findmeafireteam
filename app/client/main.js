@@ -5,6 +5,11 @@ Meteor.startup(function () {
   });
 
   Meteor.subscribe('chats', User.id());
+
+  /**
+   * Track pageview
+   */
+  GAnalytics.pageview();
 });
 
 /**
@@ -69,6 +74,6 @@ Tracker.autorun(function () {
  Session.setDefaultPersistent('chats_last_seen', {});
 
 /**
- * Initialis  e the user
+ * Initialise the user
  */
 User.init();
