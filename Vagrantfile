@@ -17,15 +17,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # vm config
   config.vm.box = "ubuntu/trusty64"
   config.vm.network "private_network", ip: "33.33.33.32"
-  config.vm.synced_folder "app/", "/mnt/App"
 
   # chef solo provisioner
   config.vm.provision "chef_solo" do |chef|
     chef.roles_path = "chef/roles"
 
-    chef.add_role "fullstack"
-    chef.add_role "app"
-
-    chef.json = {}
+    require "json"
+    chef.json = JSON.load File.new("chef/nodes/findmeafireteam.dev.json")
+    chef.json["run_list"].each do |recipe|
+      if recipe =~ /(.*)\[(.*)\]/
+        chef.send "add_" + $1, $2
+      else
+        chef.add_recipe recipe
+      end
+    end
   end
+
 end
