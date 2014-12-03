@@ -9,7 +9,7 @@ $remote_app_path = "/var/www/findmeafireteam"
 
 desc "Start up meteor ready for development"
 task :app_dev do
-  system "cd app && meteor --settings settings.json"
+  system "cd app && meteor --settings settings/development.json"
 end
 
 desc "Build the app"
@@ -75,7 +75,7 @@ def build
   system "cd app && meteor build --directory #{$build_dir}"
 
   # add settings to the build
-  system "cp app/settings.json #{$build_dir}/bundle/settings.json"
+  system "cp app/settings/production.json #{$build_dir}/bundle/settings.json"
 
   # create build tarball to be uploaded
   system "cd #{$build_dir} && tar -zcf ../#{$build_tar} ."
