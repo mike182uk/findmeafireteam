@@ -9,6 +9,7 @@ $remote_app_path = "/var/www/findmeafireteam"
 
 desc "Start up meteor ready for development"
 task :app_dev do
+  system "cd app && meteor reset"
   system "cd app && meteor --settings settings/development.json"
 end
 
