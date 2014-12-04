@@ -11,10 +11,11 @@ setuid <%= @app["system"]["user"]["name"] %>
 setgid <%= @app["system"]["user"]["group"] %>
 
 script
+    export NODE_ENV=production
     export PORT=<%= @app["meteor"]["port"] %>
     export MONGO_URL=mongodb://localhost:27017/<%= @app["mongo"]["db_name"] %>
     export ROOT_URL=<%= @app["site_url"] %>
-    export METEOR_SETTINGS=$(cat <%= @app["system"]["location"] %>/bundle/settings.json)
+    export METEOR_SETTINGS="$(cat <%= @app["system"]["location"] %>/bundle/settings.json)"
 
     exec node <%= @app["system"]["location"] %>/bundle/main.js
 end script

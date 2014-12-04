@@ -1,3 +1,10 @@
+if (process.env.NODE_ENV == 'production') {
+  // only run the fixtures in development
+  return;
+}
+
+console.log('Installing fixtures...');
+
 var chance = new Chance;
 
 if (Listings.find().count() === 0) {
