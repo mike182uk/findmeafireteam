@@ -96,6 +96,9 @@ Template.chat.events({
       // @todo do something with this error
     }
 
+    // track event
+    GAnalytics.event('chat','chat with user', 'send message');
+
     // clear the input
     $message.val('');
   },

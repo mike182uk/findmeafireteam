@@ -35,5 +35,8 @@ Template.listings.events({
   'click #show-new-listings': function (e) {
     // trigger any new listings to show
     Listings.touchLastRetrieved();
+
+    // track event
+    GAnalytics.event('listings','show new listings');
   }
 })

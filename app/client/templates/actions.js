@@ -14,5 +14,7 @@ Template.actions.events({
 
     var userListing = User.listing();
     Listings.remove(userListing._id);
+
+    GAnalytics.event('manage listing','remove listing');
   }
 });

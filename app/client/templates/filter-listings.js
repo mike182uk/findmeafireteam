@@ -33,6 +33,9 @@ Template.filterListings.events({
 
     // remove any stored filter params from the session
     Session.setTemp('filter_params', {});
+
+    // track event
+    GAnalytics.event('filter listings','reset filters');
   },
   'submit form': function (e) {
     e.preventDefault();
@@ -51,6 +54,15 @@ Template.filterListings.events({
 
     // trigger any new listings to show
     Listings.touchLastRetrieved();
+
+    // track filters applied
+    var appliedFilters = '';
+    _.each(filterParams, function(v, k) {
+      appliedFilters += k + ': ' + v + ', ';
+      GAnalytics.event('filter listings','filter by ' + k, 'filter by ' + k + ': ' + v);
+    });
+
+    GAnalytics.event('filter listings','apply filters', appliedFilters.replace(/[,\s]+$/, ''));
   },
   'change :input': function () {
     Session.setTemp('filter_criteria_modified', true);

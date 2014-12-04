@@ -33,6 +33,23 @@ Template.joinFireteam.events({
 
       // trigger any new listings to show
       Listings.touchLastRetrieved();
+
+      // track listing values used
+      var listingValues = '';
+      _.each(listingData, function(v, k) {
+        switch (k) {
+          case 'gamertag':
+          case 'created_at':
+          case 'user_id':
+          case 'comment':
+            return;
+          default:
+            listingValues += k + ': ' + v + ', ';
+            GAnalytics.event('manage listing','create listing with ' + k, 'create listing with ' + k + ': ' + v);
+        }
+      });
+
+      GAnalytics.event('manage listing','create listing', listingValues.replace(/[,\s]+$/, ''));
     } catch (e) {
       // @todo do something with this error
     }
