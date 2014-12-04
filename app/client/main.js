@@ -57,10 +57,12 @@ Tracker.autorun(function () {
 
   // add new messages count to the page title
   var title = $('title');
+  var titleText = title.text().replace(/\([0-9]+\)\s/, '');
+
   if (chatsNewMessages.total > 0) {
-    title.text('(' + chatsNewMessages.total + ') ' + title.data('content'));
+    title.text('(' + chatsNewMessages.total + ') ' + titleText);
   } else {
-    title.text(title.data('content'));
+    title.text(titleText);
   }
 });
 
