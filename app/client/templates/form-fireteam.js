@@ -78,4 +78,15 @@ Template.formFireteam.rendered = function () {
   // saved to the session and the fireteam size for the selected activity
   // is loaded
   this.$('form').find('select[name=activity]').trigger('change');
+  // form validation
+  this.$('form').validate({
+    errorClass: 'control-label',
+    highlight: function (element) {
+      $(element).parent('.form-group').addClass('has-error')
+    },
+    success: function (element) {
+      $(element).parent('.form-group').removeClass('has-error')
+      element.remove();
+    }
+  });
 };

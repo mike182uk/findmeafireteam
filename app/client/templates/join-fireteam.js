@@ -67,3 +67,17 @@ Template.joinFireteam.helpers({
     return options;
   }
 })
+
+Template.joinFireteam.rendered = function () {
+  // form validation
+  this.$('form').validate({
+    errorClass: 'control-label',
+    highlight: function (element) {
+      $(element).parent('.form-group').addClass('has-error')
+    },
+    success: function (element) {
+      $(element).parent('.form-group').removeClass('has-error')
+      element.remove();
+    }
+  });
+};
