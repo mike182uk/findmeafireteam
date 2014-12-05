@@ -16,25 +16,29 @@
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
   <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
   <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-  <meta name="msapplication-TileColor" content="#ffc40d">
+  <meta name="msapplication-TileColor" content="#da532c">
   <meta name="msapplication-TileImage" content="/mstile-144x144.png">
 </head>
 <body>
-  <div class="container">
     <header>
-      <img src="destiny-logo.png" alt="Destiny Logo" class="destiny-logo">
-      <p class="lead">The quickest and easiest way to find a Destiny fireteam.</p>
-      <p><strong>Welcome!</strong> Looking for a fireteam? We've got you covered! Have a look through the listings below, or use the filters to find a fireteam suitable for you. Alternatively create your own listing for you or your fireteam. <strong>All listings &amp; messages will be automatically removed after 1 hour.</strong> You can only have 1 listing active at a time. If you spot a problem with the website or have any feedback be sure to let us know! Tweet us at <a href="http://www.twitter.com/findmeafireteam" target="_blank">@findmeafireteam</a> or send an email to <a href="mailto:admin@findmeafireteam.com">admin@findmeafireteam.com</a>.</p>
+      <div class="container">
+        <img src="destiny-logo-white.png" alt="Destiny Logo" class="destiny-logo">
+        <div class="well">
+          <p class="lead">The quickest and easiest way to find a Destiny fireteam.</p>
+          <p class="intro"><strong>Welcome!</strong> Looking for a fireteam? We've got you covered! Have a look through the listings below, or use the filters to find a fireteam suitable for you. Alternatively create your own listing for you or your fireteam. <strong>All listings &amp; messages will be automatically removed after 1 hour.</strong> You can only have 1 listing active at a time. If you spot a problem with the website or have any feedback be sure to let us know! Tweet us at <a href="http://www.twitter.com/findmeafireteam" target="_blank">@findmeafireteam</a> or send an email to <a href="mailto:admin@findmeafireteam.com">admin@findmeafireteam.com</a>.</p>
+          {{> actions}}
+        </div>
+        {{> chats}}
+      </div>
     </header>
-    {{> chats}}
-    {{> actions}}
-    {{> filterListings}}
-    {{> listings}}
+    <div class="container">
+      {{> filterListings}}
+      {{> listings}}
 
-    {{> joinFireteam}}
-    {{> formFireteam}}
-    {{> chat}}
+      {{> joinFireteam}}
+      {{> formFireteam}}
+      {{> chat}}
 
-    {{> footer}}
-  </div>
+      {{> footer}}
+    </div>
 </body>
