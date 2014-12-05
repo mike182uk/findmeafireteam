@@ -1,7 +1,7 @@
 <template name="chats">
   {{#if chats.count}}
     <div class="btn-group " id="chats">
-      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      <button type="button" class="btn btn-primary dropdown-toggle {{buttonInitClass}}" data-toggle="dropdown">
         <i class="fa fa-comments"></i> Chats {{#if newMessagesCount}}<span class="badge">{{newMessagesCount}}</span>{{/if}} <span class="caret"></span>
       </button>
       <ul class="dropdown-menu dropdown-menu-right" role="menu">

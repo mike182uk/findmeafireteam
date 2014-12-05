@@ -19,6 +19,9 @@ Template.chats.helpers({
     var chatStateNewMessages = Session.get('chats_new_messages');
 
     return chatStateNewMessages.chats[recipient];
+  },
+  buttonInitClass: function () {
+    return $(window).scrollTop() <= 480 ? 'btn-header' : '';
   }
 });
 
