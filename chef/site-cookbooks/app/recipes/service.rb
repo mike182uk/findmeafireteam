@@ -13,5 +13,5 @@ end
 
 service service_name do
   provider Chef::Provider::Service::Upstart
-  action [:enable, :start]
+  action [:enable, :start, :restart]
 end

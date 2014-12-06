@@ -1,6 +1,16 @@
 {
   "run_list": [
     "role[fullstack]",
-    "role[app]"
-  ]
+    "role[app]",
+    "role[monitoring]"
+  ],
+  "app": {
+    "new_relic": {
+      "enabled": false,
+      "license_key": ""
+    }
+  },
+  "newrelic-sysmond": {
+    "license_key": ""
+  }
 }

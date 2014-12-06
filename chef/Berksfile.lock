@@ -2,6 +2,7 @@ DEPENDENCIES
   app
     path: site-cookbooks/app
   mongodb (~> 0.16.2)
+  newrelic-sysmond (~> 2.0.0)
   nginx (~> 2.7.4)
   nodejs (~> 2.2.0)
 
@@ -23,6 +24,9 @@ GRAPH
     apt (>= 1.8.2)
     python (>= 0.0.0)
     runit (>= 1.5.0)
+    yum (>= 3.0)
+  newrelic-sysmond (2.0.0)
+    apt (>= 1.9.2)
     yum (>= 3.0)
   nginx (2.7.4)
     apt (~> 2.2)

@@ -14,6 +14,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # vagrant-hostsupdater config
   config.vm.hostname = "findmeafireteam.dev"
 
+  # vagrant-omnibus config
+  config.omnibus.chef_version = :latest
+
   # vm config
   config.vm.box = "ubuntu/trusty64"
   config.vm.network "private_network", ip: "33.33.33.32"

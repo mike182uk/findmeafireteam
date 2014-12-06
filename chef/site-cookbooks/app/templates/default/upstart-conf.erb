@@ -11,11 +11,23 @@ setuid <%= @app["system"]["user"]["name"] %>
 setgid <%= @app["system"]["user"]["group"] %>
 
 script
+    # env vars
     export NODE_ENV=production
+
+    # new relic vars
+    <% if @app["new_relic"]["enabled"] != true %>
+    export NEW_RELIC_ENABLED=false
+    <% end %>
+    export NEW_RELIC_NO_CONFIG_FILE=true
+    export NEW_RELIC_APP_NAME=<%= @app["name"] %>
+    export NEW_RELIC_LICENSE_KEY=<%= @app["new_relic"]["license_key"] %>
+    export NEW_RELIC_LOG=<%= @app["system"]["logs_location"] + "/new_relic_agent.log" %>
+
+    # meteor app vars
     export PORT=<%= @app["meteor"]["port"] %>
     export MONGO_URL=mongodb://localhost:27017/<%= @app["mongo"]["db_name"] %>
     export ROOT_URL=<%= @app["site_url"] %>
     export METEOR_SETTINGS="$(cat <%= @app["system"]["location"] %>/bundle/settings.json)"
 
-    exec node <%= @app["system"]["location"] %>/bundle/main.js
+    exec node <%= @app["system"]["location"] %>/bundle/main.js >> <%= @app["system"]["logs_location"] + "/app.log" %>
 end script

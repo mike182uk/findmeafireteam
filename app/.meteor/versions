@@ -42,6 +42,7 @@ mobile-status-bar@1.0.1
 mongo@1.0.8
 mrt:chance@1.0.2
 mrt:moment@2.8.1
+mycartio:newrelic@1.0.5
 nemo64:bootstrap-data@3.3.0_1
 nemo64:bootstrap@3.3.0_1
 observe-sequence@1.0.3

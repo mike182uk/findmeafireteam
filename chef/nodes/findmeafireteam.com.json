@@ -2,5 +2,14 @@
   "run_list": [
     "role[fullstack]",
     "role[app]"
-  ]
+  ],
+  "app": {
+    "new_relic": {
+      "enabled": true,
+      "license_key": ""
+    }
+  },
+  "newrelic-sysmond": {
+    "license_key": ""
+  }
 }

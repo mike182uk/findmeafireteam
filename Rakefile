@@ -10,7 +10,7 @@ $remote_app_path = "/var/www/findmeafireteam"
 desc "Start up meteor ready for development"
 task :app_dev do
   system "cd app && meteor reset"
-  system "cd app && meteor --settings settings/development.json"
+  system "cd app && NEW_RELIC_NO_CONFIG_FILE=true NEW_RELIC_ENABLED=false meteor --settings settings/development.json"
 end
 
 desc "Build the app"
