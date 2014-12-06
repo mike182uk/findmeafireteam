@@ -90,6 +90,9 @@ Template.listing.rendered = function () {
 
       return content;
     },
-    trigger: 'focus'
+    trigger: 'focus',
+    delay: {
+      'hide': 200
+    }
   });
 }
