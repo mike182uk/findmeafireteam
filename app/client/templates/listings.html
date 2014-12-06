@@ -11,6 +11,9 @@
         <p>There has been <strong>{{newListingsAvailable}}</strong> new {{newListingsKeyword newListingsAvailable}} posted since your last reload. <button id="show-new-listings" class="btn btn-primary btn-xs text-capitalize">Show new {{newListingsKeyword newListingsAvailable}}</button></p>
       </div>
     {{/if}}
+    <div class="alert alert-info">
+      <p><i class="fa fa-info-circle"></i> You can send a message to another gaurdian by clicking on there gamertag!</p>
+    </div>
     {{#if listingsLoaded}}
       {{#if listings.count}}
         <table class="table table-hover">
