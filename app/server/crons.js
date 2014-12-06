@@ -32,7 +32,7 @@ SyncedCron.add({
 
     _.each(chats, function (chat) {
       var messages = _.filter(chat.messages, function (message) {
-        return message.createdAt <= timestamp;
+        return message.created_at >= timestamp;
       });
 
       try {
