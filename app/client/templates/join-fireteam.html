@@ -13,7 +13,7 @@
             <p>Lone guardian looking to join a fireteam? Fill out the form below and hit the <strong>Add Listing</strong> button. Your listing will be visible for 1 hour.</p>
             <div class="form-group">
               <label>Gamertag</label>
-              <input type="text" class="form-control" name="gamertag" required>
+              <input type="text" class="form-control" name="gamertag" required maxlength="25" minlength="2">
             </div>
             {{> commonFormSelect options=getCoreData.platforms name="platform" label="Platform"}}
             {{> commonFormSelect options=getCoreData.classes name="class" label="Class"}}
