@@ -21,7 +21,7 @@ end
 
 desc "Bootstrap a remote server for provisioning"
 task :bootstrap, [:host, :username, :password] do |task, args|
-  system "cd chef && /usr/bin/knife solo prepare --ssh-password=#{args[:password]} --node-name=findmeafireteam.com #{args[:username]}@#{args[:host]}"
+  system "cd chef && /usr/bin/knife solo prepare --ssh-password=#{args[:password]} --node-name=findmeafireteam.com #{args[:username]}@#{args[:host]} --bootstrap-version 12.0.0"
 end
 
 desc "Provision a remote server"
