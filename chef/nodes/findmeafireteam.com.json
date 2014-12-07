@@ -6,10 +6,10 @@
   "app": {
     "new_relic": {
       "enabled": true,
-      "license_key": ""
+      "license_key": "49e0ed9042ac23ae184d3487049f94be0cc6d8ab"
     }
   },
   "newrelic-sysmond": {
-    "license_key": ""
+    "license_key": "49e0ed9042ac23ae184d3487049f94be0cc6d8ab"
   }
 }

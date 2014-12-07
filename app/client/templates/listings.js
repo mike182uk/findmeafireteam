@@ -44,5 +44,8 @@ Template.listings.events({
   },
   'close.bs.alert #send-message-info-alert': function (e) {
     Session.setPersistent('hide_send_message_info_alert', true);
+
+    // track event
+    GAnalytics.event('alerts','dismissed send message info alert');
   }
 })
