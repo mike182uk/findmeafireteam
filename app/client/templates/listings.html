@@ -11,9 +11,17 @@
         <p>There has been <strong>{{newListingsAvailable}}</strong> new {{newListingsKeyword newListingsAvailable}} posted since your last reload. <button id="show-new-listings" class="btn btn-primary btn-xs text-capitalize">Show new {{newListingsKeyword newListingsAvailable}}</button></p>
       </div>
     {{/if}}
-    <div class="alert alert-info">
-      <p><i class="fa fa-info-circle"></i> You can send a message to another gaurdian by clicking on there gamertag!</p>
+    {{#unless hideSendMessageInfoAlert}}
+    <div class="alert alert-info alert-dismissible" id="send-message-info-alert">
+      <button type="button" class="close" data-dismiss="alert">
+        <span>&times;</span>
+      </button>
+      <p>
+        <i class="fa fa-info-circle"></i>
+        You can send a message to another guardian by clicking on there gamertag and hitting the <strong>Send Message</strong> button!
+      </p>
     </div>
+    {{/unless}}
     {{#if listingsLoaded}}
       {{#if listings.count}}
         <table class="table table-hover">
@@ -35,7 +43,7 @@
         {{#if listingsAreFiltered}}
           <p class="lead">There are no listings that match your criteria.</p>
         {{else}}
-          <p class="lead">There are no listings at the moment. Why not be the first to add one?</p>
+          <p class="lead">There are no listings at the moment :( Why not be the first to add one?</p>
         {{/if}}
       {{/if}}
     {{else}}

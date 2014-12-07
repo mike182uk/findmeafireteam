@@ -28,6 +28,9 @@ Template.listings.helpers({
   },
   listingsLoaded: function () {
     return Listings.lastRetrieved();
+  },
+  hideSendMessageInfoAlert: function () {
+    return Session.get('hide_send_message_info_alert');
   }
 });
 
@@ -38,5 +41,8 @@ Template.listings.events({
 
     // track event
     GAnalytics.event('listings','show new listings');
+  },
+  'close.bs.alert #send-message-info-alert': function (e) {
+    Session.setPersistent('hide_send_message_info_alert', true);
   }
 })
