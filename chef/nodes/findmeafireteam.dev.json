@@ -1,8 +1,7 @@
 {
   "run_list": [
     "role[fullstack]",
-    "role[app]",
-    "role[monitoring]"
+    "role[app]"
   ],
   "app": {
     "new_relic": {
