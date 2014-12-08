@@ -53,7 +53,7 @@ Helpers.getProgressionLevelFilterOptions = function () {
     { key: '<10', label: '< 10', levels: _.range(1, 10) },
     { key: '10-20', label: '10 - 20', levels: _.range(10, 20) },
     { key: '20-25', label: '20 - 25', levels: _.range(20, 25) },
-    { key: '25-30', label: '25 - 30', levels: _.range(25, 30) }
+    { key: '25-32', label: '25 - 32', levels: _.range(25, 32) }
   ];
 },
 

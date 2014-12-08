@@ -48,6 +48,7 @@ CoreData.activities = [
     key: 'raid',
     label: 'Raid - Normal',
     subActivities: [
+      { key: 'raid|normal|crotas_end|fresh_run', label: 'Crota\'s End - Normal (Fresh Run)' },
       { key: 'raid|normal|vault_of_glass|fresh_run', label: 'Vault Of Glass - Normal (Fresh Run)' },
       { key: 'raid|normal|vault_of_glass|conflux_checkpoint', label: 'Vault Of Glass - Normal (Conflux Checkpoint)' },
       { key: 'raid|normal|vault_of_glass|oracles_checkpoint', label: 'Vault Of Glass - Normal (Oracles Checkpoint)' },
@@ -76,7 +77,7 @@ CoreData.activities = [
     subActivities: [
       { key: 'strike|weekly_heroic_strike|level_22', label: 'Weekly Heroic Strike - Level 22' },
       { key: 'strike|weekly_heroic_strike|level_26', label: 'Weekly Heroic Strike - Level 26' },
-      { key: 'strike|weekly_heroic_strike|level_28', label: 'Weekly Heroic Strike - Level 28' }
+      { key: 'strike|weekly_heroic_strike|level_30', label: 'Weekly Heroic Strike - Level 30' }
     ],
     type: 'strike'
   },
@@ -94,7 +95,8 @@ CoreData.activities = [
     subActivities: [
       { key: 'story|daily_heroic|level_20', label: 'Daily Heroic Story - Level 20' },
       { key: 'story|daily_heroic|level_24', label: 'Daily Heroic Story - Level 24' },
-      { key: 'story|daily_heroic|level_28', label: 'Daily Heroic Story - Level 28' },
+      { key: 'story|daily_heroic|level_30', label: 'Daily Heroic Story - Level 30' },
+      { key: 'story|earth', label: 'Story - The Dark Below' },
       { key: 'story|earth', label: 'Story - Earth' },
       { key: 'story|moon', label: 'Story - Moon' },
       { key: 'story|venus', label: 'Story - Venus' },
@@ -117,23 +119,35 @@ CoreData.activities = [
     key: 'strike_playlist',
     label: 'Strike Playlists',
     subActivities: [
-      { key: 'strike_playlist|fresh_run', label: 'Strike Playlist - Eagle (Level 18)' },
-      { key: 'strike_playlist|conflux_checkpoint', label: 'Strike Playlist - Viper (Level 20)' },
-      { key: 'strike_playlist|oracles_checkpoint', label: 'Strike Playlist - Wolf (Level 22)' },
-      { key: 'strike_playlist|templar_checkpoint', label: 'Strike Playlist - Tiger (Level 24)' },
+      { key: 'strike_playlist|eagle', label: 'Strike Playlist - Eagle (Level 18)' },
+      { key: 'strike_playlist|viper', label: 'Strike Playlist - Viper (Level 20)' },
+      { key: 'strike_playlist|wolf', label: 'Strike Playlist - Wolf (Level 22)' },
+      { key: 'strike_playlist|tiger', label: 'Strike Playlist - Tiger (Level 24)' },
+      { key: 'strike_playlist|roc', label: 'Strike Playlist - Roc (Level 26)' },
+      { key: 'strike_playlist|dragon', label: 'Strike Playlist - Dragon (Level 28)' },
     ],
-    type: 'raid'
+    type: 'strike'
   },
   {
-    key: 'strikes',
-    label: 'Strikes',
+    key: 'strike',
+    label: 'Strike',
     subActivities: [
+      { key: 'strike|will_of_crota', label: 'Strike - The Will Of Crota' },
+      { key: 'strike|undying_mind', label: 'Strike - The Undying Mind (Playstation Only)' },
       { key: 'strike|devils_lair', label: 'Strike - The Devils\' Lair' },
       { key: 'strike|summoning_pits', label: 'Strike - The Summoning Pits' },
       { key: 'strike|nexus', label: 'Strike - The Nexus' },
       { key: 'strike|winters_run', label: 'Strike - Winter\'s Run' },
       { key: 'strike|cerebus_vae_iii', label: 'Strike - Cerebus Vae III' },
-      { key: 'strike|dust_palace', label: 'Strike - Dust Palace' }
+      { key: 'strike|dust_palace', label: 'Strike - Dust Palace (Playstation Only)' },
+    ],
+    type: 'strike'
+  },
+  {
+    key: 'achievement',
+    label: 'Achievement',
+    subActivities: [
+      { key: 'achievement|flawless_raider', label: 'Flawless Raider' }
     ],
     type: 'raid'
   },
@@ -149,7 +163,7 @@ CoreData.activities = [
       { key: 'crucible|skirmish', label: 'Crucible - Skirmish' },
       { key: 'crucible|iron_banner', label: 'Crucible - Iron Banner' }
     ],
-    type: 'raid'
+    type: 'crucible'
   },
 ]
 
@@ -158,7 +172,7 @@ CoreData.activities = [
  *
  * @type {Number}
  */
-CoreData.maxProgressionLevel = 30;
+CoreData.maxProgressionLevel = 32;
 
 /**
  * Fireteam sizes per activity type
