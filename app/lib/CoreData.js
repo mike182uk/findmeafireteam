@@ -94,7 +94,11 @@ CoreData.activities = [
     subActivities: [
       { key: 'story|daily_heroic|level_20', label: 'Daily Heroic Story - Level 20' },
       { key: 'story|daily_heroic|level_24', label: 'Daily Heroic Story - Level 24' },
-      { key: 'story|daily_heroic|level_28', label: 'Daily Heroic Story - Level 28' }
+      { key: 'story|daily_heroic|level_28', label: 'Daily Heroic Story - Level 28' },
+      { key: 'story|earth', label: 'Story - Earth' },
+      { key: 'story|moon', label: 'Story - Moon' },
+      { key: 'story|venus', label: 'Story - Venus' },
+      { key: 'story|mars', label: 'Story - Mars' }
     ],
     type: 'story'
   },
@@ -108,7 +112,45 @@ CoreData.activities = [
       { key: 'patrol|mars', label: 'Patrol - Mars' }
     ],
     type: 'patrol'
-  }
+  },
+  {
+    key: 'strike_playlist',
+    label: 'Strike Playlists',
+    subActivities: [
+      { key: 'strike_playlist|fresh_run', label: 'Strike Playlist - Eagle (Level 18)' },
+      { key: 'strike_playlist|conflux_checkpoint', label: 'Strike Playlist - Viper (Level 20)' },
+      { key: 'strike_playlist|oracles_checkpoint', label: 'Strike Playlist - Wolf (Level 22)' },
+      { key: 'strike_playlist|templar_checkpoint', label: 'Strike Playlist - Tiger (Level 24)' },
+    ],
+    type: 'raid'
+  },
+  {
+    key: 'strikes',
+    label: 'Strikes',
+    subActivities: [
+      { key: 'strike|devils_lair', label: 'Strike - The Devils\' Lair' },
+      { key: 'strike|summoning_pits', label: 'Strike - The Summoning Pits' },
+      { key: 'strike|nexus', label: 'Strike - The Nexus' },
+      { key: 'strike|winters_run', label: 'Strike - Winter\'s Run' },
+      { key: 'strike|cerebus_vae_iii', label: 'Strike - Cerebus Vae III' },
+      { key: 'strike|dust_palace', label: 'Strike - Dust Palace' }
+    ],
+    type: 'raid'
+  },
+  {
+    key: 'crucible',
+    label: 'Crucible',
+    subActivities: [
+      { key: 'crucible|clash', label: 'Crucible - Clash' },
+      { key: 'crucible|combined_arms', label: 'Crucible - Combined Arms' },
+      { key: 'crucible|control', label: 'Crucible - Control' },
+      { key: 'crucible|rumble', label: 'Crucible - Rumble' },
+      { key: 'crucible|salvage', label: 'Crucible - Salvage' },
+      { key: 'crucible|skirmish', label: 'Crucible - Skirmish' },
+      { key: 'crucible|iron_banner', label: 'Crucible - Iron Banner' }
+    ],
+    type: 'raid'
+  },
 ]
 
 /**
