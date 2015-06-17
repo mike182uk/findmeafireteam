@@ -2,9 +2,6 @@
   "public": {
     "ga": {
       "account": "UA-57002859-2"
-    },
-    "nr": {
-      "enabled": true
     }
   }
 }

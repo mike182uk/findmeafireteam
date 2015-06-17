@@ -2,9 +2,6 @@
   "public": {
     "ga": {
       "account": ""
-    },
-    "nr": {
-      "enabled": false
     }
   }
 }

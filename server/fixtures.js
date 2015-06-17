@@ -18,7 +18,7 @@ if (Listings.find().count() === 0) {
     listing['activity'] = _.sample(Helpers.getActivityKeys());
     listing['has_mic'] = _.random(1);
     listing['has_exp'] = _.random(1);
-    listing['created_at'] = (moment().subtract(_.random(1, 80), 'minutes').toDate()).getTime();
+    listing['created_at'] = (moment().subtract(_.random(1, 10), 'minutes').toDate()).getTime();
     listing['user_id'] = User.generateId();
 
     var types = ['guardian', 'fireteam'];

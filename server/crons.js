@@ -1,7 +1,7 @@
 SyncedCron.add({
-  name: 'Remove listings older than 1 hour',
+  name: 'Remove listings older than 10 minutes',
   schedule: function(parser) {
-    return parser.text('every 5 minutes');
+    return parser.text('every 10 minutes');
   },
   job: function() {
     var timestamp = (moment().subtract(1, 'h').toDate()).getTime();
@@ -24,7 +24,7 @@ SyncedCron.add({
 SyncedCron.add({
   name: 'Remove messages / chats older than 1 hour',
   schedule: function(parser) {
-    return parser.text('every 5 minutes');
+    return parser.text('every 1 hour');
   },
   job: function() {
     var timestamp = (moment().subtract(1, 'h').toDate()).getTime();
