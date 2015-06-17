@@ -60,7 +60,7 @@ Template.joinFireteam.helpers({
   getProgressionLevelOptions: function () {
     var options = [];
 
-    for (var i = 1; i <= CoreData.maxProgressionLevel; i++) {
+    for (var i = CoreData.maxProgressionLevel; i !== 0; i--) {
       options.push({ key: i, label: i });
     }
 
