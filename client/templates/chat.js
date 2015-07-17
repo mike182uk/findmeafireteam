@@ -37,7 +37,7 @@ Template.chat.events({
     // when the chat modal opens, set the chat last seen timestamp to hide any notification
     // badges that are already present
     var chatsLastSeen = Session.get('chats_last_seen');
-    chatsLastSeen[activeChat.recipient_id] = (new Date).getTime();
+    chatsLastSeen[activeChat.recipient_id] = moment.utc().valueOf();
     Session.setPersistent('chats_last_seen', chatsLastSeen);
   },
   'hidden.bs.modal #chat': function (e) {
@@ -46,7 +46,7 @@ Template.chat.events({
     // when the chat modal closes, set the chat last seen timestamp to only show new
     // message notifications for messages sent after the chat modal has closed
     var chatsLastSeen = Session.get('chats_last_seen');
-    chatsLastSeen[activeChat.recipient_id] = (new Date).getTime();
+    chatsLastSeen[activeChat.recipient_id] = moment.utc().valueOf();
     Session.setPersistent('chats_last_seen', chatsLastSeen);
 
     // reset the current active chat
@@ -73,7 +73,7 @@ Template.chat.events({
     // set message data
     var messageData = {};
     messageData['sender'] = User.id();
-    messageData['created_at'] = (new Date).getTime();
+    messageData['created_at'] = moment.utc().valueOf();
     messageData['content'] = message;
 
     try {

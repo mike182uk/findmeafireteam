@@ -4,7 +4,7 @@ SyncedCron.add({
     return parser.text('every 10 minutes');
   },
   job: function() {
-    var timestamp = (moment().subtract(1, 'h').toDate()).getTime();
+    var timestamp = (moment().utc().subtract(1, 'h')).valueOf();
     var oldListings = Listings.find({
       created_at: {
         $lt: timestamp
@@ -27,7 +27,7 @@ SyncedCron.add({
     return parser.text('every 1 hour');
   },
   job: function() {
-    var timestamp = (moment().subtract(1, 'h').toDate()).getTime();
+    var timestamp = (moment().utc().subtract(1, 'h')).valueOf();
     var chats = Chats.find().fetch();
 
     _.each(chats, function (chat) {

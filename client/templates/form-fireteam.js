@@ -19,7 +19,7 @@ Template.formFireteam.events({
     }
 
     listingData['type'] = 'fireteam';
-    listingData['created_at'] = (new Date).getTime();
+    listingData['created_at'] = moment.utc().valueOf();
     listingData['user_id'] = User.id();
     listingData['required_fireteam_members'] = parseInt(listingData['required_fireteam_members']);
 
