@@ -29,7 +29,7 @@ Template.chats.events({
   'click a[data-action=send-message]': function (e) {
     e.preventDefault();
 
-    var $el = $(e.target);
+    var $el = $(e.currentTarget);
     var recipientId = $el.data('user-id');
     var chatModal = $('#chat');
 
