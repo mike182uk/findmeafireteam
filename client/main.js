@@ -30,7 +30,7 @@ Tracker.autorun(function () {
     // if there is no saved timestamp for this chat, set the last seen timestamp
     // to be a date in the past we can see notifications for this chat
     if ( ! lastSeenTimestamp) {
-      var lastSeenTimestamp = moment.utc().valueOf();
+      var lastSeenTimestamp = moment.utc().subtract(10, 'minutes');
     }
 
     // if there is currently a chat active, and it is the chat that is being anaylzed,
