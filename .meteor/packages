@@ -8,7 +8,6 @@ insecure
 underscore
 chrismbeckett:fontawesome4
 mrt:moment
-u2622:persistent-session
 mrt:chance
 less
 nemo64:bootstrap
@@ -17,3 +16,4 @@ percolatestudio:synced-cron
 datariot:ganalytics
 cramhead:jquery-validate
 jquery-waypoints
+u2622:persistent-session@=0.2.1
