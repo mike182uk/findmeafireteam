@@ -26,7 +26,7 @@ if (Listings.find().count() === 0) {
 
     if (listing['type'] == 'guardian') {
       listing['class'] = _.sample(CoreData.classes).key;
-      listing['level'] = _.random(1, CoreData.maxProgressionLevel);
+      listing['level'] = _.random(CoreData.minLightLevel, CoreData.maxLightLevel);
     } else {
       // fireteam can also have 'any' region
       var regions = _.clone(CoreData.regions);

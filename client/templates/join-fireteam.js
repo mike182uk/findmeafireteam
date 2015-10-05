@@ -57,10 +57,10 @@ Template.joinFireteam.events({
 });
 
 Template.joinFireteam.helpers({
-  getProgressionLevelOptions: function () {
+  getLightLevelOptions: function () {
     var options = [];
 
-    for (var i = CoreData.maxProgressionLevel; i !== 0; i--) {
+    for (var i = CoreData.maxLightLevel; i !== CoreData.minLightLevel; i--) {
       options.push({ key: i, label: i });
     }
 

@@ -70,8 +70,8 @@ Template.filterListings.events({
 });
 
 Template.filterListings.helpers({
-  getProgressionLevelOptions: function () {
-    return Helpers.getProgressionLevelFilterOptions();
+  getLightLevelOptions: function () {
+    return Helpers.getLightLevelFilterOptions();
   },
   getFireteamSizeOptionLabelFilter : function () {
     return function (key, label) {
