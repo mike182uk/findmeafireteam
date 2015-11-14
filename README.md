@@ -1,4 +1,4 @@
-#[findmeafireteam.com](http://findmeafireteam.com)
+#[Find Me A Fireteam](http://findmeafireteam.meteor.com)
 
 ##What
 
@@ -17,7 +17,7 @@ A website for helping players match make for end game activities in [Destiny](ht
 - Advanced filtering options
   - Filter by platform
   - Filter by region
-  - FIlter by activity
+  - Filter by activity
   - Filter by listing type
   - Filter by fireteam size
   - Filter by microphone access
