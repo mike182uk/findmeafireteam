@@ -1,4 +1,4 @@
-#[Find Me A Fireteam](http://findmeafireteam.meteor.com)
+#[Find Me A Fireteam](https://findmeafireteam.herokuapp.com)
 
 ##What
 
@@ -32,3 +32,4 @@ A website for helping players match make for end game activities in [Destiny](ht
 - [Meteor](https://www.meteor.com/)
 - [Less](http://lesscss.org/)
 - [MongoDB](https://www.mongodb.org/)
+- [Heroku](https://www.heroku.com/)
