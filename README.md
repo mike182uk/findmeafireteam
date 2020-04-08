@@ -1,3 +1,5 @@
+#### ⚠️ This project is no longer maintained
+
 # Find Me A Fireteam
 
 ## What
