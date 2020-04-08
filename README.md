@@ -1,4 +1,4 @@
-# [Find Me A Fireteam](https://findmeafireteam.herokuapp.com)
+# Find Me A Fireteam
 
 ## What
 
